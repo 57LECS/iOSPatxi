@@ -1,0 +1,9 @@
+/Users/issc611/Projects/Drinkify/Drinkify/bin/iPhoneSimulator/Debug/Drinkify.exe
+/Users/issc611/Projects/Drinkify/Drinkify/bin/iPhoneSimulator/Debug/Drinkify.pdb
+/Users/issc611/Projects/Drinkify/Drinkify/obj/iPhoneSimulator/Debug/Drinkify.csproj.CoreCompileInputs.cache
+/Users/issc611/Projects/Drinkify/Drinkify/obj/iPhoneSimulator/Debug/Drinkify.exe
+/Users/issc611/Projects/Drinkify/Drinkify/obj/iPhoneSimulator/Debug/Drinkify.pdb
+/Users/issc611/Projects/Drinkify/Drinkify/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.2/ibtool/_BundleResourceWithLogicalName.items
+/Users/issc611/Projects/Drinkify/Drinkify/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.2/actool/_PartialAppManifest.items
+/Users/issc611/Projects/Drinkify/Drinkify/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.2/actool/_BundleResourceWithLogicalName.items
+/Users/issc611/Projects/Drinkify/Drinkify/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.2/optimized/
