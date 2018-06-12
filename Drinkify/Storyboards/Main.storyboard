@@ -169,7 +169,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zuf-m6-cLq">
-                                <rect key="frame" x="0.0" y="45" width="375" height="573"/>
+                                <rect key="frame" x="16" y="45" width="343" height="573"/>
                                 <color key="backgroundColor" red="0.24705882352941178" green="0.25098039215686274" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J82-xL-7yd">
                                     <size key="itemSize" width="162" height="162"/>
@@ -185,32 +185,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xMA-aw-8rb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
+                                                </imageView>
                                                 <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9O-IJ-8fO">
-                                                    <rect key="frame" x="8" y="8" width="146" height="146"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <state key="normal" title="Tequila">
-                                                        <color key="titleColor" red="0.80784313730000001" green="0.72549019609999998" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
                                                         <segue destination="2pj-fY-hXS" kind="show" identifier="detalleSegue" id="ku4-R0-EYR"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xMA-aw-8rb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
-                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottomMargin" secondItem="N9O-IJ-8fO" secondAttribute="bottom" id="CcY-xk-79M"/>
+                                            <constraint firstItem="N9O-IJ-8fO" firstAttribute="top" secondItem="KcM-BT-JYh" secondAttribute="top" id="2is-tS-vum"/>
+                                            <constraint firstAttribute="bottom" secondItem="N9O-IJ-8fO" secondAttribute="bottom" id="DrM-X4-KKn"/>
+                                            <constraint firstItem="N9O-IJ-8fO" firstAttribute="centerY" secondItem="KcM-BT-JYh" secondAttribute="centerY" id="Ffa-AI-Njh"/>
+                                            <constraint firstItem="N9O-IJ-8fO" firstAttribute="centerX" secondItem="KcM-BT-JYh" secondAttribute="centerX" id="JcL-6b-6Cv"/>
                                             <constraint firstAttribute="trailing" secondItem="xMA-aw-8rb" secondAttribute="trailing" id="MGo-gn-Nt2"/>
-                                            <constraint firstItem="N9O-IJ-8fO" firstAttribute="leading" secondItem="KcM-BT-JYh" secondAttribute="leadingMargin" id="NCU-nL-QC1"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="N9O-IJ-8fO" secondAttribute="trailing" id="REC-AT-gZK"/>
                                             <constraint firstItem="xMA-aw-8rb" firstAttribute="top" secondItem="KcM-BT-JYh" secondAttribute="top" id="RPW-TG-fEe"/>
-                                            <constraint firstItem="N9O-IJ-8fO" firstAttribute="centerX" secondItem="KcM-BT-JYh" secondAttribute="centerX" id="f5F-ea-tqJ"/>
-                                            <constraint firstItem="N9O-IJ-8fO" firstAttribute="top" secondItem="KcM-BT-JYh" secondAttribute="topMargin" id="icP-tz-auf"/>
+                                            <constraint firstAttribute="trailing" secondItem="N9O-IJ-8fO" secondAttribute="trailing" id="Spd-52-Tux"/>
+                                            <constraint firstItem="N9O-IJ-8fO" firstAttribute="leading" secondItem="KcM-BT-JYh" secondAttribute="leading" id="fxJ-a0-lAG"/>
                                             <constraint firstItem="xMA-aw-8rb" firstAttribute="leading" secondItem="KcM-BT-JYh" secondAttribute="leading" id="lAE-8S-4qa"/>
-                                            <constraint firstItem="N9O-IJ-8fO" firstAttribute="centerY" secondItem="KcM-BT-JYh" secondAttribute="centerY" id="xvo-0e-DJN"/>
                                             <constraint firstAttribute="bottom" secondItem="xMA-aw-8rb" secondAttribute="bottom" id="y1l-hz-xYe"/>
                                         </constraints>
                                         <connections>
@@ -230,19 +230,22 @@
                                 <color key="barTintColor" red="0.31372549020000001" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.31372549020000001" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yTt-Qt-qBs" firstAttribute="leading" secondItem="IL9-HI-sbi" secondAttribute="leading" id="8JA-7f-Yb1"/>
                             <constraint firstItem="zuf-m6-cLq" firstAttribute="top" secondItem="yTt-Qt-qBs" secondAttribute="bottom" id="CLR-VU-Neq"/>
                             <constraint firstItem="hDd-zi-6hO" firstAttribute="top" secondItem="zuf-m6-cLq" secondAttribute="bottom" id="CcE-1n-r91"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zuf-m6-cLq" secondAttribute="trailing" id="HNz-SD-Oor"/>
                             <constraint firstItem="zuf-m6-cLq" firstAttribute="top" secondItem="NgL-dZ-atq" secondAttribute="bottom" constant="25" id="MiB-2j-3ru"/>
-                            <constraint firstItem="zuf-m6-cLq" firstAttribute="leading" secondItem="IL9-HI-sbi" secondAttribute="leading" id="ftB-zI-lkV"/>
+                            <constraint firstItem="zuf-m6-cLq" firstAttribute="leading" secondItem="IL9-HI-sbi" secondAttribute="leadingMargin" id="nWz-Ve-9eY"/>
                             <constraint firstItem="yTt-Qt-qBs" firstAttribute="top" secondItem="IL9-HI-sbi" secondAttribute="top" id="s3f-st-FFr"/>
                             <constraint firstAttribute="trailing" secondItem="yTt-Qt-qBs" secondAttribute="trailing" id="tiu-lm-rtB"/>
-                            <constraint firstAttribute="trailing" secondItem="zuf-m6-cLq" secondAttribute="trailing" id="wib-Iz-fOM"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Bebidas" id="CMp-8I-LEA"/>
+                    <connections>
+                        <outlet property="collectionView" destination="zuf-m6-cLq" id="Ptj-V4-0lD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVd-RG-056" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

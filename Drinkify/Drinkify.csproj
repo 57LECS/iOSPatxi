@@ -85,12 +85,42 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Tequila.imageset\addiction-alcoholic-beverages-bar-858466.jpg" />
+    <ImageAsset Include="Assets.xcassets\Tequila.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ron.imageset\alcohol-alcoholic-bar-4784.jpg" />
+    <ImageAsset Include="Assets.xcassets\ron.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Cerveza.imageset\alcohol-alcoholic-beer-1862.jpg" />
+    <ImageAsset Include="Assets.xcassets\Cerveza.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Brandy.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Brandy.imageset\alcohol-alcoholic-brandy-51957.jpg" />
+    <ImageAsset Include="Assets.xcassets\Ginebra.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Ginebra.imageset\alcohol-beverage-blur-616836.jpg" />
+    <ImageAsset Include="Assets.xcassets\Mezcal.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Mezcal.imageset\mezcal2.jpg" />
+    <ImageAsset Include="Assets.xcassets\Whisky.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Whisky.imageset\StockSnap_ZPBLF2CX0D.jpg" />
+    <ImageAsset Include="Assets.xcassets\Vino.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Vino.imageset\adult-alcohol-blur-290316.jpg" />
+    <ImageAsset Include="Assets.xcassets\Cognac.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Cognac.imageset\beverage-clear-close-up-53174.jpg" />
+    <ImageAsset Include="Assets.xcassets\Vodka.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Vodka.imageset\vodka.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Storyboards\" />
     <Folder Include="Cells\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Assets.xcassets\Tequila.imageset\" />
+    <Folder Include="Assets.xcassets\ron.imageset\" />
+    <Folder Include="Assets.xcassets\Cerveza.imageset\" />
+    <Folder Include="Assets.xcassets\Brandy.imageset\" />
+    <Folder Include="Assets.xcassets\Ginebra.imageset\" />
+    <Folder Include="Assets.xcassets\Mezcal.imageset\" />
+    <Folder Include="Assets.xcassets\Whisky.imageset\" />
+    <Folder Include="Assets.xcassets\Vino.imageset\" />
+    <Folder Include="Assets.xcassets\Cognac.imageset\" />
+    <Folder Include="Assets.xcassets\Vodka.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\Carrito.storyboard" />

@@ -17,6 +17,8 @@ namespace Drinkify.Storyboards
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            collectionView.Delegate = this;
+            collectionView.DataSource = this;
         }
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
@@ -34,16 +36,95 @@ namespace Drinkify.Storyboards
 
         public nint GetItemsCount(UICollectionView collectionView, nint section)
         {
-            return 1;
+            return 10;
         }
 
         public UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
             var cell = collectionView.DequeueReusableCell(CollectionBebidaViewCell.Key, indexPath) as CollectionBebidaViewCell;
 
-            cell.btnTitle = "Tequila";
+            var length = collectionView.VisibleCells.Length;
+            var title = (Alcoholes)length;
+            NSData data;
+            UIImage img;
+
+            switch (length)
+            {
+                case 0:
+                    img = UIImage.FromBundle("Brandy");
+                    break;
+                case 1:
+                    img = UIImage.FromBundle("Cerveza");
+                    break;
+                case 2:
+                    img = UIImage.FromBundle("Cognac");
+                    break;
+                case 3:
+                    img = UIImage.FromBundle("Ginebra");
+                    break;
+                case 4:
+                    img = UIImage.FromBundle("Mezcal");
+                    break;
+                case 5:
+                    img = UIImage.FromBundle("Ron");
+                    break;
+                case 6:
+                    img = UIImage.FromBundle("Tequila");
+                    break;
+                case 7:
+                    img = UIImage.FromBundle("Vino");
+                    break;
+                case 8:
+                    img = UIImage.FromBundle("Vodka");
+                    break;
+                case 9:
+                    img = UIImage.FromBundle("Whisky");
+                    break;
+                
+
+
+                default:
+                    img = new UIImage();
+                    break;
+            }
+
+
+
+
+            cell.BackgroundImage = img;
+            cell.btnTitle = title.ToString();
 
             return cell;
+                
+        }
+
+
+
+        [Export("numberOfSectionsInCollectionView:")]
+        public nint NumberOfSections(UICollectionView collectionView)
+        {
+            return 1;
+        }
+
+        [Export("collectionView:layout:minimumLineSpacingForSectionAtIndex:")]
+        public nfloat GetMinimumLineSpacingForSection(UICollectionView collectionView, UICollectionViewLayout layout, nint section)
+        {
+            return 15;
+        }
+
+        enum Alcoholes
+        {
+            Brandy,
+            Cerveza,
+            Cognac,
+            Ginebra,
+            Mezcal,
+            Ron,
+            Tequila,
+            Vino,
+            Vodka,
+            Whisky
+
         }
     }
 }

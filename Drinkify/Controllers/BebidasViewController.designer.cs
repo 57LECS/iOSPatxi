@@ -1,20 +1,26 @@
 // WARNING
 //
-// This file has been generated automatically by Visual Studio from the outlets and
-// actions declared in your storyboard file.
-// Manual changes to this file will not be maintained.
+// This file has been generated automatically by Visual Studio to store outlets and
+// actions made in the UI designer. If it is removed, they will be lost.
+// Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System;
 using System.CodeDom.Compiler;
 
 namespace Drinkify.Storyboards
 {
-    [Register ("BebidasViewController")]
-    partial class BebidasViewController
-    {
-        void ReleaseDesignerOutlets ()
-        {
-        }
-    }
+	[Register ("BebidasViewController")]
+	partial class BebidasViewController
+	{
+		[Outlet]
+		UIKit.UICollectionView collectionView { get; set; }
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (collectionView != null) {
+				collectionView.Dispose ();
+				collectionView = null;
+			}
+		}
+	}
 }
