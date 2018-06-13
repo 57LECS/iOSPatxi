@@ -66,7 +66,7 @@ namespace Drinkify.Storyboards
                     img = UIImage.FromBundle("Mezcal");
                     break;
                 case 5:
-                    img = UIImage.FromBundle("Ron");
+                    img = UIImage.FromBundle("ron");
                     break;
                 case 6:
                     img = UIImage.FromBundle("Tequila");

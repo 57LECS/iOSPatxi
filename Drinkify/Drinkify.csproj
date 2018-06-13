@@ -158,6 +158,14 @@
     <Compile Include="Controllers\HomeTableViewController.designer.cs">
       <DependentUpon>HomeTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Storyboards\CollectionCheckOutCell.cs" />
+    <Compile Include="Storyboards\CollectionCheckOutCell.designer.cs">
+      <DependentUpon>CollectionCheckOutCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Storyboards\CheckOutViewController.cs" />
+    <Compile Include="Storyboards\CheckOutViewController.designer.cs">
+      <DependentUpon>CheckOutViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
