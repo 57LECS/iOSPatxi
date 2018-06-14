@@ -123,9 +123,9 @@
     <Folder Include="Assets.xcassets\Vodka.imageset\" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Storyboards\Carrito.storyboard" />
     <InterfaceDefinition Include="Storyboards\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Storyboards\Main.storyboard" />
+    <InterfaceDefinition Include="Storyboards\TrackerStoryboard.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -158,13 +158,33 @@
     <Compile Include="Controllers\HomeTableViewController.designer.cs">
       <DependentUpon>HomeTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Storyboards\CollectionCheckOutCell.cs" />
-    <Compile Include="Storyboards\CollectionCheckOutCell.designer.cs">
+    <Compile Include="Controllers\CheckOutViewController.cs" />
+    <Compile Include="Controllers\CheckOutViewController.designer.cs">
+      <DependentUpon>CheckOutViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CollectionCheckOutCell.cs" />
+    <Compile Include="Controllers\CollectionCheckOutCell.designer.cs">
       <DependentUpon>CollectionCheckOutCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Storyboards\CheckOutViewController.cs" />
-    <Compile Include="Storyboards\CheckOutViewController.designer.cs">
-      <DependentUpon>CheckOutViewController.cs</DependentUpon>
+    <Compile Include="Controllers\CollectionBotanaViewCell.cs" />
+    <Compile Include="Controllers\CollectionBotanaViewCell.designer.cs">
+      <DependentUpon>CollectionBotanaViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PatxiTrackerViewController.cs" />
+    <Compile Include="Controllers\PatxiTrackerViewController.designer.cs">
+      <DependentUpon>PatxiTrackerViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BotanasViewController.cs" />
+    <Compile Include="Controllers\BotanasViewController.designer.cs">
+      <DependentUpon>BotanasViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ExtraViewController.cs" />
+    <Compile Include="Controllers\ExtraViewController.designer.cs">
+      <DependentUpon>ExtraViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HomeViewController.cs" />
+    <Compile Include="Controllers\HomeViewController.designer.cs">
+      <DependentUpon>HomeViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
