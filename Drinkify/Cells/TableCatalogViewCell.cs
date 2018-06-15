@@ -11,6 +11,51 @@ namespace Drinkify.Storyboards
 	{
 		public TableCatalogViewCell (IntPtr handle) : base (handle)
 		{
+            
 		}
+
+        public static readonly NSString Key = new NSString(nameof(TableCatalogViewCell));
+
+        #region Properties
+
+        public UIImage ProductImage
+        {
+            get => imgProd.Image;
+            set => imgProd.Image = value;
+        }
+
+        public string NameText
+        {
+            get => txtNombre.Text;
+            set => txtNombre.Text = value;
+        }
+
+        public string QuantityText
+        {
+            get => txtCant.Text;
+            set => txtCant.Text = value;
+        }
+
+        public string DescriptionText
+        {
+            get => txtDesc.Text;
+            set => txtDesc.Text = value;
+        }
+
+        public string PriceText
+        {
+            get => txtPrecio.Text;
+            set => txtPrecio.Text = value;
+        }
+
+
+        public NSIndexPath IndexPath
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
 	}
 }

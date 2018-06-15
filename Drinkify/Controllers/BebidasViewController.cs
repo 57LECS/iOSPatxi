@@ -3,6 +3,7 @@
 using System;
 
 using Foundation;
+using Patxi.Models;
 using UIKit;
 
 namespace Drinkify.Storyboards
@@ -26,7 +27,7 @@ namespace Drinkify.Storyboards
 
             if (segue.Identifier.Equals("detalleSegue")==true){
 
-                var vc = segue.DestinationViewController as DetalleViewController;
+                //var vc = segue.DestinationViewController as DetalleViewController;
             }else if (segue.Identifier.Equals("prueba") == true)
             {
                 var vc = segue.DestinationViewController as DetalleViewController;
@@ -43,12 +44,12 @@ namespace Drinkify.Storyboards
         {
             var cell = collectionView.DequeueReusableCell(CollectionBebidaViewCell.Key, indexPath) as CollectionBebidaViewCell;
 
+
             var length = collectionView.VisibleCells.Length;
-            var title = (Alcoholes)length;
-            NSData data;
+            var title = (Alcoholes) (int)indexPath.Item;
             UIImage img;
 
-            switch (length)
+            switch (indexPath.Item)
             {
                 case 0:
                     img = UIImage.FromBundle("Brandy");
@@ -81,15 +82,10 @@ namespace Drinkify.Storyboards
                     img = UIImage.FromBundle("Whisky");
                     break;
                 
-
-
                 default:
                     img = new UIImage();
                     break;
             }
-
-
-
 
             cell.BackgroundImage = img;
             cell.btnTitle = title.ToString();
@@ -112,19 +108,6 @@ namespace Drinkify.Storyboards
             return 15;
         }
 
-        enum Alcoholes
-        {
-            Brandy,
-            Cerveza,
-            Cognac,
-            Ginebra,
-            Mezcal,
-            Ron,
-            Tequila,
-            Vino,
-            Vodka,
-            Whisky
 
-        }
     }
 }

@@ -6,7 +6,8 @@
 	<dict>
 		<key>output-files</key>
 		<array>
-			<string>/Users/issc611/Projects/Drinkify/Drinkify/obj/iPhoneSimulator/Debug/device-builds/iphone10.4-11.2/actool/partial-info.plist</string>
+			<string>/Users/issc611/Projects/57LECS/iOSPatxi.git/Drinkify/obj/iPhoneSimulator/Debug/device-builds/iphone10.4-11.2/actool/bundle/Assets.car</string>
+			<string>/Users/issc611/Projects/57LECS/iOSPatxi.git/Drinkify/obj/iPhoneSimulator/Debug/device-builds/iphone10.4-11.2/actool/partial-info.plist</string>
 		</array>
 	</dict>
 </dict>

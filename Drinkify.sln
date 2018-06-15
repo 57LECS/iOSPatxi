@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drinkify", "Drinkify\Drinkify.csproj", "{02B8371C-658E-4780-82F6-2FE66E412518}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3BCFC9DA-4FE6-4780-BA06-3AB88E20016D}"
+	ProjectSection(SolutionItems) = preProject
+		gitignore = gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator

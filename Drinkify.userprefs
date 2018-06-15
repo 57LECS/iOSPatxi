@@ -1,10 +1,12 @@
 ﻿<Properties StartupConfiguration="{02B8371C-658E-4780-82F6-2FE66E412518}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Estado de iOSPatxi.git">
     <Files>
-      <File FileName="Drinkify/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="Drinkify/Controllers/BebidasViewController.cs" Line="29" Column="1" />
-      <File FileName="Drinkify/Controllers/DetalleViewController.cs" Line="1" Column="1" />
-      <File FileName="Drinkify/Cells/CollectionBebidaViewCell.cs" Line="23" Column="10" />
+      <File FileName="Drinkify/AppDelegate.cs" Line="9" Column="53" />
+      <File FileName="Drinkify/Controllers/BebidasViewController.cs" Line="86" Column="38" />
+      <File FileName="Drinkify/Controllers/DetalleViewController.cs" Line="18" Column="4" />
+      <File FileName="Drinkify/Controllers/HomeViewController.cs" Line="17" Column="1" />
+      <File FileName="Drinkify/Main.cs" Line="12" Column="1" />
+      <File FileName="Drinkify/Cells/TableCatalogViewCell.cs" Line="59" Column="9" />
       <File FileName="Estado de iOSPatxi.git" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -14,5 +16,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Drinkify PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B4CAAB65-04F8-4C59-AB3D-7FCB43826F96" />
+  <MonoDevelop.Ide.ItemProperties.Drinkify PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.181F8E37-CA30-4072-B282-003174C7489E" />
 </Properties>

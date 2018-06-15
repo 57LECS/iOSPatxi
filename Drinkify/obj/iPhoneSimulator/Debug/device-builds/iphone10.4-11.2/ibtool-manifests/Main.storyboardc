@@ -7,6 +7,37 @@
 	<key>com.apple.ibtool.document.notices</key>
 	<dict/>
 	<key>com.apple.ibtool.document.warnings</key>
-	<dict/>
+	<dict>
+		<key>pWm-bd-rrE</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>pWm-bd-rrE</string>
+				</array>
+				<key>message</key>
+				<string>Prototype collection view cells must have reuse identifiers</string>
+				<key>type</key>
+				<string>IBUnsupportedConfiguration</string>
+				<key>type-value</key>
+				<integer>9</integer>
+			</dict>
+		</array>
+		<key>zRg-UI-0BK</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>zRg-UI-0BK</string>
+				</array>
+				<key>message</key>
+				<string>Prototype collection view cells must have reuse identifiers</string>
+				<key>type</key>
+				<string>IBUnsupportedConfiguration</string>
+				<key>type-value</key>
+				<integer>9</integer>
+			</dict>
+		</array>
+	</dict>
 </dict>
 </plist>
