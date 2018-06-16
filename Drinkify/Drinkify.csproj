@@ -116,6 +116,8 @@
     <ImageAsset Include="Assets.xcassets\Tequila5.imageset\Tequila5.jpg" />
     <ImageAsset Include="Assets.xcassets\Tequila6.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Tequila6.imageset\Tequila6.jpg" />
+    <ImageAsset Include="Assets.xcassets\profileTest.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\profileTest.imageset\attractive-beautiful-beauty-735552.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -139,6 +141,7 @@
     <Folder Include="Assets.xcassets\Tequila4.imageset\" />
     <Folder Include="Assets.xcassets\Tequila5.imageset\" />
     <Folder Include="Assets.xcassets\Tequila6.imageset\" />
+    <Folder Include="Assets.xcassets\profileTest.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\LaunchScreen.storyboard" />
@@ -180,10 +183,6 @@
     <Compile Include="Controllers\CheckOutViewController.designer.cs">
       <DependentUpon>CheckOutViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\CollectionCheckOutCell.cs" />
-    <Compile Include="Controllers\CollectionCheckOutCell.designer.cs">
-      <DependentUpon>CollectionCheckOutCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\PatxiTrackerViewController.designer.cs">
       <DependentUpon>PatxiTrackerViewController.cs</DependentUpon>
     </Compile>
@@ -213,7 +212,31 @@
     <Compile Include="Models\Repartidor.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Usuario.cs" />
-    <Compile Include="gitignore" />
+    <Compile Include="Cells\CollectionHomeOrdersViewCell.cs" />
+    <Compile Include="Cells\CollectionHomeOrdersViewCell.designer.cs">
+      <DependentUpon>CollectionHomeOrdersViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\CollectionHomePaqueteViewCell.cs" />
+    <Compile Include="Cells\CollectionHomePaqueteViewCell.designer.cs">
+      <DependentUpon>CollectionHomePaqueteViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\CollectionHomeViewCell.cs" />
+    <Compile Include="Cells\CollectionHomeViewCell.designer.cs">
+      <DependentUpon>CollectionHomeViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\CollectionCheckOutCell.cs" />
+    <Compile Include="Cells\CollectionCheckOutCell.designer.cs">
+      <DependentUpon>CollectionCheckOutCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\CollectionMasViewCell.cs" />
+    <Compile Include="Cells\CollectionMasViewCell.designer.cs">
+      <DependentUpon>CollectionMasViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Botana.cs" />
+    <Compile Include="Controllers\ProfileViewController.cs" />
+    <Compile Include="Controllers\ProfileViewController.designer.cs">
+      <DependentUpon>ProfileViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

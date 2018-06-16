@@ -9,18 +9,12 @@ using System.CodeDom.Compiler;
 
 namespace Drinkify.Storyboards
 {
-	[Register ("HomeViewController")]
-	partial class HomeViewController
+	[Register ("CollectionMasViewCell")]
+	partial class CollectionMasViewCell
 	{
-		[Outlet]
-		UIKit.UICollectionView collectionView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (collectionView != null) {
-				collectionView.Dispose ();
-				collectionView = null;
-			}
 		}
 	}
 }

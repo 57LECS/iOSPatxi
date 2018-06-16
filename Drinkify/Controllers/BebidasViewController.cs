@@ -25,12 +25,12 @@ namespace Drinkify.Storyboards
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
 
-            if (segue.Identifier.Equals("detalleSegue")==true){
+            if (segue.Identifier.Equals("detalleBebidasSegue")==true){
 
-                //var vc = segue.DestinationViewController as DetalleViewController;
-            }else if (segue.Identifier.Equals("prueba") == true)
-            {
                 var vc = segue.DestinationViewController as DetalleViewController;
+                vc.isOrders = false;
+                vc.isBebidas = true;
+                vc.isBotanas = false;
             }
 
         }

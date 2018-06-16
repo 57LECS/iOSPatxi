@@ -9,25 +9,25 @@ using System.CodeDom.Compiler;
 
 namespace Drinkify.Storyboards
 {
-	[Register ("CollectionBotanaViewCell")]
-	partial class CollectionBotanaViewCell
+	[Register ("CollectionHomePaqueteViewCell")]
+	partial class CollectionHomePaqueteViewCell
 	{
 		[Outlet]
-		UIKit.UIButton btnBotanas { get; set; }
+		UIKit.UIButton btnPackage { get; set; }
 
 		[Outlet]
-		UIKit.UIImageView imgBackGround { get; set; }
+		UIKit.UIImageView imgBackground { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnBotanas != null) {
-				btnBotanas.Dispose ();
-				btnBotanas = null;
+			if (imgBackground != null) {
+				imgBackground.Dispose ();
+				imgBackground = null;
 			}
 
-			if (imgBackGround != null) {
-				imgBackGround.Dispose ();
-				imgBackGround = null;
+			if (btnPackage != null) {
+				btnPackage.Dispose ();
+				btnPackage = null;
 			}
 		}
 	}

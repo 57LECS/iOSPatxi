@@ -12,7 +12,11 @@ namespace Drinkify.Storyboards
 	{
 
         List<Producto> Productos = new List<Producto>();
-        int contador = 0;
+        public bool isOrders = false;
+        public bool isBebidas = false;
+        public bool isBotanas= false;
+
+        //int contador = 0;
 
 		public DetalleViewController (IntPtr handle) : base (handle)
 		{
@@ -38,13 +42,38 @@ namespace Drinkify.Storyboards
 
         public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
-            cell.NameText = "Jose Cuervo Rolling Stones";
-            cell.PriceText = "$260.00";
-            cell.QuantityText = "1 l";
-            cell.DescriptionText = "Tequila Cuervo Tradicional Plata Rolling Stones";
-            //cell.ProductImage = UIImage.FromBundle("Tequila1");
-            return cell;
+            if(isOrders){
+                var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
+                cell.NameText = "21/05/2018";
+                cell.PriceText = "$250.00";
+                cell.QuantityText = "2 Productos";
+                cell.DescriptionText = "Absolut Edic Facet \n Prispas";
+                cell.ProductImage = UIImage.FromBundle("Tequila1");
+                return cell;
+            }
+            else if (isBebidas)
+            {
+                var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
+                cell.NameText = "Absolut Edic Facet";
+                cell.PriceText = "$230.00";
+                cell.QuantityText = "750 ml";
+                cell.DescriptionText = "Vodka Absolut Azul Edic Facet";
+                cell.ProductImage = UIImage.FromBundle("Tequila1");
+                return cell;
+            }
+            else if (isBotanas)
+            {
+                var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
+                cell.NameText = "Prispas";
+                cell.PriceText = "$20.00";
+                cell.QuantityText = "250 g";
+                cell.DescriptionText = "";
+                cell.ProductImage = UIImage.FromBundle("Tequila1");
+                return cell;
+            }
+
+            return new UITableViewCell();
+
         }
 
         [Export("numberOfSectionsInTableView:")]
@@ -55,7 +84,7 @@ namespace Drinkify.Storyboards
 
         public nint RowsInSection(UITableView tableView, nint section)
         {
-            return 1;
+            return 2;
             //return Productos.Count;
         }
 	}

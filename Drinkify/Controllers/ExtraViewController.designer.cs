@@ -12,9 +12,15 @@ namespace Drinkify.Storyboards
 	[Register ("ExtraViewController")]
 	partial class ExtraViewController
 	{
+		[Outlet]
+		UIKit.UICollectionView collectionView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (collectionView != null) {
+				collectionView.Dispose ();
+				collectionView = null;
+			}
 		}
 	}
 }

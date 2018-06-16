@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g7Y-G2-cyJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Patxi Tracker View Controller-->
+        <!--CheckOut-->
         <scene sceneID="HN4-1Y-mmg">
             <objects>
                 <viewController id="G8F-T0-avr" customClass="PatxiTrackerViewController" sceneMemberID="viewController">
@@ -22,16 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9B-hj-afZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="Regresar" id="nL2-fX-Ip6"/>
-                                </items>
-                                <color key="tintColor" red="0.3294117647" green="0.72941176470000002" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xij-ZP-OsJ">
-                                <rect key="frame" x="101" y="74" width="173" height="170"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xij-ZP-OsJ">
+                                <rect key="frame" x="101" y="118" width="173" height="126"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repartidor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tre-c6-2uw">
                                 <rect key="frame" x="144" y="323" width="86" height="21"/>
@@ -107,14 +99,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="8np-dO-1y5" secondAttribute="trailing" id="0Qs-XX-44O"/>
                             <constraint firstItem="QDP-2Q-f34" firstAttribute="leading" secondItem="DTo-2x-RyB" secondAttribute="leadingMargin" id="2e2-HN-qmk"/>
                             <constraint firstItem="jCJ-fm-69o" firstAttribute="centerX" secondItem="DTo-2x-RyB" secondAttribute="centerX" id="3WZ-l4-Hwo"/>
                             <constraint firstItem="8np-dO-1y5" firstAttribute="top" secondItem="Xij-ZP-OsJ" secondAttribute="bottom" constant="8" id="67S-w2-cVW"/>
                             <constraint firstItem="rRM-8R-Bcd" firstAttribute="leading" secondItem="DTo-2x-RyB" secondAttribute="leadingMargin" id="6kx-cf-6oR"/>
-                            <constraint firstAttribute="trailing" secondItem="c9B-hj-afZ" secondAttribute="trailing" id="Dya-rk-Eew"/>
                             <constraint firstItem="tre-c6-2uw" firstAttribute="top" secondItem="8np-dO-1y5" secondAttribute="bottom" constant="50" id="Ebs-1v-z5Q"/>
                             <constraint firstItem="voW-A6-hw5" firstAttribute="top" secondItem="QDP-2Q-f34" secondAttribute="bottom" constant="40" id="FrF-xL-5I1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xij-ZP-OsJ" secondAttribute="trailing" constant="85" id="G2F-bj-uCM"/>
@@ -128,11 +119,9 @@
                             <constraint firstItem="Bfn-s3-O7e" firstAttribute="centerX" secondItem="DTo-2x-RyB" secondAttribute="centerX" id="VcG-Sb-sRC"/>
                             <constraint firstItem="Bfn-s3-O7e" firstAttribute="leading" secondItem="DTo-2x-RyB" secondAttribute="leadingMargin" constant="160.5" id="Wl6-0t-JZc"/>
                             <constraint firstItem="F35-s9-lfY" firstAttribute="top" secondItem="Bfn-s3-O7e" secondAttribute="bottom" constant="33" id="X9D-N5-P1j"/>
-                            <constraint firstItem="c9B-hj-afZ" firstAttribute="leading" secondItem="DTo-2x-RyB" secondAttribute="leading" id="XIk-FQ-h5w"/>
                             <constraint firstItem="jCJ-fm-69o" firstAttribute="top" secondItem="rRM-8R-Bcd" secondAttribute="bottom" constant="35" id="Xu2-Eh-Y3W"/>
                             <constraint firstItem="yRt-YN-Xbe" firstAttribute="leading" secondItem="0Hr-8P-n0p" secondAttribute="trailing" constant="77" id="Y2f-bA-hPN"/>
                             <constraint firstItem="8np-dO-1y5" firstAttribute="top" secondItem="Xij-ZP-OsJ" secondAttribute="bottom" constant="8" id="ab7-rm-TbV"/>
-                            <constraint firstItem="Xij-ZP-OsJ" firstAttribute="top" secondItem="c9B-hj-afZ" secondAttribute="bottom" constant="10" id="abz-NE-xDt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rRM-8R-Bcd" secondAttribute="trailing" id="aj4-tf-4rd"/>
                             <constraint firstItem="jCJ-fm-69o" firstAttribute="top" secondItem="rRM-8R-Bcd" secondAttribute="bottom" constant="35" id="aoh-l6-R2J"/>
                             <constraint firstItem="QDP-2Q-f34" firstAttribute="centerX" secondItem="DTo-2x-RyB" secondAttribute="centerX" id="b1Y-AE-syp"/>
@@ -144,7 +133,6 @@
                             <constraint firstItem="0Hr-8P-n0p" firstAttribute="leading" secondItem="DTo-2x-RyB" secondAttribute="leadingMargin" id="i6y-Gq-Bm8"/>
                             <constraint firstItem="voW-A6-hw5" firstAttribute="leading" secondItem="DTo-2x-RyB" secondAttribute="leadingMargin" id="iX9-WG-znh"/>
                             <constraint firstItem="QSY-bY-GxA" firstAttribute="top" secondItem="QDP-2Q-f34" secondAttribute="bottom" constant="40" id="jki-G8-v4r"/>
-                            <constraint firstItem="c9B-hj-afZ" firstAttribute="top" secondItem="8ig-kI-8j3" secondAttribute="bottom" id="jwx-F8-h5B"/>
                             <constraint firstItem="yRt-YN-Xbe" firstAttribute="top" secondItem="QSY-bY-GxA" secondAttribute="bottom" constant="8" id="kHa-gy-wFU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bfn-s3-O7e" secondAttribute="trailing" constant="160.5" id="kVn-fd-vLr"/>
                             <constraint firstItem="tre-c6-2uw" firstAttribute="top" secondItem="8np-dO-1y5" secondAttribute="bottom" constant="50" id="lxE-oo-0gA"/>
@@ -162,6 +150,7 @@
                             <constraint firstItem="Bfn-s3-O7e" firstAttribute="top" secondItem="yRt-YN-Xbe" secondAttribute="bottom" constant="5" id="zPV-u0-5Gg"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="CheckOut" id="gR3-zf-fjD"/>
                     <connections>
                         <outlet property="imgStatus" destination="Xij-ZP-OsJ" id="qOB-Xa-kpD"/>
                         <outlet property="lblCantidad" destination="0Hr-8P-n0p" id="Had-HI-sQD"/>
@@ -174,7 +163,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kYd-U6-msh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290.39999999999998" y="-94.002998500749626"/>
+            <point key="canvasLocation" x="841" y="-94"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iLb-1d-VBj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g7Y-G2-cyJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lgm-lg-HgB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="G8F-T0-avr" kind="relationship" relationship="rootViewController" id="e7i-6I-zs6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="roJ-lT-pE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-634" y="-135"/>
         </scene>
     </scenes>
 </document>

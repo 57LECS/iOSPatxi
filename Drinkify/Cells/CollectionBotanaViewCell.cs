@@ -9,6 +9,26 @@ namespace Drinkify.Storyboards
 {
 	public partial class CollectionBotanaViewCell : UICollectionViewCell
 	{
+        public static readonly NSString Key = new NSString(nameof(CollectionBotanaViewCell));
+
+
+        public string btnTitle
+        {
+            get => btnBotanas.Title(UIControlState.Normal);
+            set => btnBotanas.SetTitle(value, UIControlState.Normal);
+
+        }
+
+        public UIImage BackgroundImage
+        {
+            get => imgBackGround.Image;
+
+            set => imgBackGround.Image = value;
+
+
+        }
+
+
 		public CollectionBotanaViewCell (IntPtr handle) : base (handle)
 		{
 		}

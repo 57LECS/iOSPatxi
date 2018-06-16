@@ -12,9 +12,15 @@ namespace Drinkify.Storyboards
 	[Register ("BotanasViewController")]
 	partial class BotanasViewController
 	{
+		[Outlet]
+		UIKit.UICollectionView collectionView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (collectionView != null) {
+				collectionView.Dispose ();
+				collectionView = null;
+			}
 		}
 	}
 }

@@ -3,14 +3,89 @@
 using System;
 
 using Foundation;
+using Patxi.Models;
 using UIKit;
 
 namespace Drinkify.Storyboards
 {
-	public partial class BotanasViewController : UIViewController
+    public partial class BotanasViewController : UIViewController, IUICollectionViewDataSource, IUICollectionViewDelegate, IUICollectionViewDelegateFlowLayout
 	{
 		public BotanasViewController (IntPtr handle) : base (handle)
 		{
 		}
-	}
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            collectionView.Delegate = this;
+            collectionView.DataSource = this;
+        }
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+
+            if (segue.Identifier.Equals("detalleBotanasSegue") == true)
+            {
+
+                var vc = segue.DestinationViewController as DetalleViewController;
+                vc.isOrders = false;
+                vc.isBebidas = false;
+                vc.isBotanas = true;
+            }
+
+        }
+
+        public nint GetItemsCount(UICollectionView collectionView, nint section)
+        {
+            return 4;
+        }
+
+        public UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
+        {
+            var cell = collectionView.DequeueReusableCell(CollectionBotanaViewCell.Key, indexPath) as CollectionBotanaViewCell;
+
+
+            var title = (Botanas)(int)indexPath.Item;
+            UIImage img;
+
+            switch (indexPath.Item)
+            {
+                case 0:
+                    img = UIImage.FromBundle("Brandy");
+                    break;
+                case 1:
+                    img = UIImage.FromBundle("Cerveza");
+                    break;
+                case 2:
+                    img = UIImage.FromBundle("Cognac");
+                    break;
+                case 3:
+                    img = UIImage.FromBundle("Ginebra");
+                    break;
+
+                default:
+                    img = new UIImage();
+                    break;
+            }
+
+            cell.BackgroundImage = img;
+            cell.btnTitle = title.ToString();
+
+            return cell;
+
+        }
+
+
+
+        [Export("numberOfSectionsInCollectionView:")]
+        public nint NumberOfSections(UICollectionView collectionView)
+        {
+            return 1;
+        }
+
+        [Export("collectionView:layout:minimumLineSpacingForSectionAtIndex:")]
+        public nfloat GetMinimumLineSpacingForSection(UICollectionView collectionView, UICollectionViewLayout layout, nint section)
+        {
+            return 15;
+        }
+    }
 }
