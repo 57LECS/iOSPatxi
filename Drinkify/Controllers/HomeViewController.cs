@@ -5,6 +5,8 @@ using System;
 using Foundation;
 using Patxi.Models;
 using UIKit;
+using Firebase.Core;
+using Firebase.Database;
 
 namespace Drinkify.Storyboards
 {
@@ -22,6 +24,21 @@ namespace Drinkify.Storyboards
             sectionInsets = new UIEdgeInsets(20, 20, 20, 20);
             collectionView.Delegate = this;
             collectionView.DataSource = this;
+            DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
+            nuint quantity;
+            DatabaseReference order = rootNode.GetChild("1");
+            order.ObserveSingleEvent(DataEventType.Value, (snapshot) => {
+                //quantity = snapshot.GetValue<NSNumber>().NUIntValue;
+
+                if (!snapshot.Exists)
+                    return;
+                
+                var data = snapshot.GetValue<NSDictionary>();
+                var totalPrice = data.ValueForKey((NSString)"TotalPrice")?.ToString();
+
+            }, (error) => {
+                Console.WriteLine(error.LocalizedDescription);
+            });
         }
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)

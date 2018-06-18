@@ -337,9 +337,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-EE-m7I">
-                                <rect key="frame" x="16" y="24" width="343" height="570"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-EE-m7I">
+                                <rect key="frame" x="16" y="45" width="343" height="573"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6iv-dL-Uab">
                                     <size key="itemSize" width="162" height="162"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -494,6 +493,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Btb-EE-m7I" firstAttribute="top" secondItem="5cD-O6-Dti" secondAttribute="bottom" constant="25" id="9Go-Ve-QRB"/>
+                            <constraint firstItem="UqK-qs-V2o" firstAttribute="top" secondItem="Btb-EE-m7I" secondAttribute="bottom" id="fLq-t6-iJ9"/>
+                            <constraint firstItem="Btb-EE-m7I" firstAttribute="trailing" secondItem="Tkj-1k-KZT" secondAttribute="trailingMargin" id="utK-Vl-azA"/>
+                            <constraint firstItem="Btb-EE-m7I" firstAttribute="leading" secondItem="Tkj-1k-KZT" secondAttribute="leadingMargin" id="x4g-Lh-ra0"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="J36-cp-DE3"/>
                     <connections>
@@ -846,7 +851,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Z1X-X6-lHw"/>
+        <segue reference="T5o-JD-FVG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3294117647" green="0.72941176470000002" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
