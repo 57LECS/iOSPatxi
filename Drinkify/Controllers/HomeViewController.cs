@@ -25,7 +25,7 @@ namespace Drinkify.Storyboards
             collectionView.Delegate = this;
             collectionView.DataSource = this;
             DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
-            nuint quantity;
+            //nuint quantity;
             DatabaseReference order = rootNode.GetChild("1");
             order.ObserveSingleEvent(DataEventType.Value, (snapshot) => {
                 //quantity = snapshot.GetValue<NSNumber>().NUIntValue;
