@@ -56,6 +56,16 @@ namespace Patxi.Models
             set { itemsBought = value; }
         }
 
+        private string imageURL;
+
+        public string ImageURL
+        {
+            get { return imageURL; }
+            set { imageURL = value; }
+        }
+
+
+
 
     }
 }

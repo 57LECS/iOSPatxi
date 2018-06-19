@@ -8,6 +8,7 @@ using UIKit;
 using Firebase.Core;
 using Firebase.Database;
 using System.Collections.Generic;
+using Drinkify.Helper;
 
 namespace Drinkify.Storyboards
 {
@@ -38,6 +39,7 @@ namespace Drinkify.Storyboards
                 bebidas = snapshot.GetValue<NSDictionary>();
 
                 //AddNewQuest();
+                SetUserData();
                 //var totalPrice = data.ValueForKey((NSString)"TotalPrice")?.ToString();
 
             }, (error) => {
@@ -66,58 +68,37 @@ namespace Drinkify.Storyboards
 
         public void AddNewQuest()
         {
-            for (int i = 0; i < 5; i++)
-            {
-                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
-                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
+            
+                object[] alcoholKeys = { "Nombre", "Edad", "Correo", "Password", "Sexo", "rutaImagen" };
+                object[] alcoholValues = { "Andrea Hernandez De Alba", "21", "andie@correo.com", "123456789", "M", "qwerty" };
                 var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
                 DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
-                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Bebidas").GetChild("Ron");
+                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Usuarios");
                 DatabaseReference productoNode = productosNode.GetChildByAutoId();
                 productoNode.SetValue<NSDictionary>(qs2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
-                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
-                var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
-                DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
-                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Bebidas").GetChild("Tequila");
-                DatabaseReference productoNode = productosNode.GetChildByAutoId();
-                productoNode.SetValue<NSDictionary>(qs2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
-                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
-                var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
-                DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
-                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Bebidas").GetChild("Vino");
-                DatabaseReference productoNode = productosNode.GetChildByAutoId();
-                productoNode.SetValue<NSDictionary>(qs2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
-                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
-                var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
-                DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
-                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Bebidas").GetChild("Vodka");
-                DatabaseReference productoNode = productosNode.GetChildByAutoId();
-                productoNode.SetValue<NSDictionary>(qs2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
-                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
-                var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
-                DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
-                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Bebidas").GetChild("Whisky");
-                DatabaseReference productoNode = productosNode.GetChildByAutoId();
-                productoNode.SetValue<NSDictionary>(qs2);
-            }
+
            
 
+        }
+
+        public void SetUserData(){
+            DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
+            //nuint quantity;
+            DatabaseReference bebidas = rootNode.GetChild("0").GetChild("Usuarios").GetChild("-LFMk0i9sdCo5P6ptFYC");
+            bebidas.ObserveSingleEvent(DataEventType.Value, (snapshot) => {
+                if (!snapshot.Exists)
+                    return;
+
+                var personaDiccionary = snapshot.GetValue<NSDictionary>();
+                Persona personita = new Persona();
+                personita.Id = bebidas.Key;
+                personita.Name = personaDiccionary.ValueForKey((NSString)"Nombre").ToString();
+                personita.Email = personaDiccionary.ValueForKey((NSString)"Correo").ToString();
+                DataPersistanceClass.persona=personita;
+
+            }, (error) => {
+                Console.WriteLine(error.LocalizedDescription);
+            });
         }
 
 

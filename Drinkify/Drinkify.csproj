@@ -132,6 +132,24 @@
     <ImageAsset Include="Assets.xcassets\Tequila6.imageset\Tequila6.jpg" />
     <ImageAsset Include="Assets.xcassets\profileTest.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\profileTest.imageset\attractive-beautiful-beauty-735552.jpg" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\patxiLogo%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\patxiLogo%403x.png" />
+    <ImageAsset Include="Assets.xcassets\iconBotana.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iconBotana.imageset\iconBotanas.png" />
+    <ImageAsset Include="Assets.xcassets\iconBotana.imageset\iconBotanas%402x.png" />
+    <ImageAsset Include="Assets.xcassets\iconBotana.imageset\iconBotanas%403x.png" />
+    <ImageAsset Include="Assets.xcassets\iconBotella.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iconBotella.imageset\iconBotella.png" />
+    <ImageAsset Include="Assets.xcassets\iconBotella.imageset\iconBotella%402x.png" />
+    <ImageAsset Include="Assets.xcassets\iconBotella.imageset\iconBotella%403x.png" />
+    <ImageAsset Include="Assets.xcassets\iconHome.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iconHome.imageset\iconHouse.png" />
+    <ImageAsset Include="Assets.xcassets\iconHome.imageset\iconHouse%402x.png" />
+    <ImageAsset Include="Assets.xcassets\iconHome.imageset\iconHouse%403x.png" />
+    <ImageAsset Include="Assets.xcassets\iconCheckOut.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iconCheckOut.imageset\iconCheck.png" />
+    <ImageAsset Include="Assets.xcassets\iconCheckOut.imageset\iconCheck%402x.png" />
+    <ImageAsset Include="Assets.xcassets\iconCheckOut.imageset\iconCheck%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -157,6 +175,10 @@
     <Folder Include="Assets.xcassets\Tequila6.imageset\" />
     <Folder Include="Assets.xcassets\profileTest.imageset\" />
     <Folder Include="Helper\" />
+    <Folder Include="Assets.xcassets\iconBotana.imageset\" />
+    <Folder Include="Assets.xcassets\iconBotella.imageset\" />
+    <Folder Include="Assets.xcassets\iconHome.imageset\" />
+    <Folder Include="Assets.xcassets\iconCheckOut.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\LaunchScreen.storyboard" />

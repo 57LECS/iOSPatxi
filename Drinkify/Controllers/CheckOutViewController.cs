@@ -7,16 +7,28 @@ using UIKit;
 using Drinkify.Helper;
 using System.Collections.Generic;
 using Patxi.Models;
+using Firebase.Database;
 
 namespace Drinkify.Storyboards
 {
     public partial class CheckOutViewController : UIViewController, IUICollectionViewDataSource, IUICollectionViewDelegate, IUICollectionViewDelegateFlowLayout
     {
         List<Producto> productos;
+        Pedido pedido;
 	
 		public CheckOutViewController (IntPtr handle) : base (handle)
 		{
             
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+            base.PrepareForSegue(segue, sender);
+            if(segue.Identifier.Equals("segueToTracker")==true){
+                var vc = segue.DestinationViewController as PatxiTrackerViewController;
+                SetOrderInFireBase();
+                vc.pedido = pedido;
+            }
 		}
 
 		public override void ViewDidLoad()
@@ -27,6 +39,7 @@ namespace Drinkify.Storyboards
 
             CheckOutCollectionView.Delegate = this;
             CheckOutCollectionView.DataSource = this;
+
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -39,9 +52,10 @@ namespace Drinkify.Storyboards
 
 
         void setDatos(){
-            txtNombre.Text = DataPersistanceClass.persona.Name??"Luis Edgardo Calderon";
+            txtNombre.Text = DataPersistanceClass.persona.Name??"Usuario Name";
             txtCantidad.Text = productos.Count.ToString();
             txtFormPago.Text = "Tarjeta con terminal";
+            txtTotal.Text = $"${CalcularPrecioTotal()}";
             txtFormPago.Enabled = false;
             txtTotal.Enabled = false;
             txtNombre.Enabled = false;
@@ -68,6 +82,53 @@ namespace Drinkify.Storyboards
         public nint NumberOfSections(UICollectionView collectionView)
         {
             return 1;
+        }
+
+		 void SetOrderInFireBase()
+		{
+            
+            object[] alcoholKeys = { "Fecha", "TotalProductos", "TotalPrecio", "Repartidor", "Status", "Direccion" };
+            object[] alcoholValues = { DateTime.Now.ToString(), TotalProducts().ToString(), CalcularPrecioTotal(), "Martin Franciso Jimenez Sanchez", 1, "Cima del Sol 153, Lomas del Sol,37150, Leon GTO" };
+            var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
+            DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
+            DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Pedidos").GetChild(DataPersistanceClass.persona.Id);
+            DatabaseReference productoNode = productosNode.GetChildByAutoId();
+
+
+            pedido = new Pedido();
+            pedido.Id = productoNode.Key;
+            pedido.Repartidor = "Martin Franciso Jimenez Sanchez";
+            pedido.IdUser = DataPersistanceClass.persona.Id;
+            pedido.Date = DateTime.Now.ToString();
+            pedido.Address = "Cima del Sol 153, Lomas del Sol,37150, Leon GTO";
+            pedido.IdStatus = 1;
+            pedido.TotalPrice = double.Parse(CalcularPrecioTotal());
+            pedido.TotalProducts = TotalProducts();
+            pedido.Products = productos;
+            productoNode.SetValue<NSDictionary>(qs2);
+
+		}
+
+        string CalcularPrecioTotal(){
+            double total=0.0;
+
+            foreach (Producto item in productos)
+            {
+                var precio = item.Price;
+                var cant = item.ItemsBought;
+                total += (precio * int.Parse(cant));
+            }
+
+            return total.ToString();
+        }
+
+        int TotalProducts(){
+            int total = 0;
+            foreach (Producto item in productos)
+            {
+                total = int.Parse(item.ItemsBought);
+            }
+            return total;
         }
 	}
 }

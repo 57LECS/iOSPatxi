@@ -3,14 +3,35 @@
 using System;
 
 using Foundation;
+using Patxi.Models;
 using UIKit;
 
 namespace Drinkify.Storyboards
 {
 	public partial class PatxiTrackerViewController : UIViewController
 	{
+        public Pedido pedido;
 		public PatxiTrackerViewController (IntPtr handle) : base (handle)
 		{
 		}
+
+		public override void ViewDidLoad()
+		{
+            base.ViewDidLoad();
+
+            setDatos();
+            btnRegresar.Clicked+= delegate {
+                DismissViewController(true, null);
+
+            };
+		}
+
+        void setDatos(){
+            lblDireccion.Text = pedido.Address;
+            lblTotal.Text = $"${pedido.TotalPrice.ToString()}";
+            lblCantidad.Text = pedido.TotalProducts.ToString();
+            lblRepartidor.Text = pedido.Repartidor;
+        }
+
 	}
 }

@@ -7,9 +7,9 @@ namespace Patxi.Models
 {
     public class Persona
     {
-        private double id;
+        private string id;
 
-        public double Id
+        public string Id
         {
             get { return id; }
             set { id = value; }

@@ -6,46 +6,34 @@ namespace Patxi.Models
 {
     public class Pedido
     {
-        private double id;
+        private string id;
 
-        public double Id
+        public string Id
         {
             get { return id; }
             set { id = value; }
         }
 
 
-        private int idRepartidor;
+        private string repartidor;
 
-        public int IdRepartidor
+        public string Repartidor
         {
-            get { return idStatus; }
-            set { idStatus = value; }
+            get { return repartidor; }
+            set { repartidor = value; }
         }
 
-        private Repartidor delivery;
 
-        public Repartidor Delivery    
-        {
-            get { return delivery; }
-            set { delivery = value; }
-        }
 
-        private int idUser;
+        private string user;
 
-        public int IdUser
-        {
-            get { return idStatus; }
-            set { idStatus = value; }
-        }
-
-        private Usuario user;
-
-        public Usuario User
+        public string IdUser
         {
             get { return user; }
             set { user = value; }
         }
+
+
 
         private string address;
 
@@ -55,9 +43,9 @@ namespace Patxi.Models
             set { address = value; }
         }
 
-        private DateTime fecha;
+        private string fecha;
 
-        public DateTime Date
+        public string Date
         {
             get { return fecha; }
             set { fecha = value; }
@@ -73,15 +61,6 @@ namespace Patxi.Models
         }
 
 
-
-        private Status status;
-
-        public Status Status
-        {
-            get { return status; }
-            set { status = value; }
-        }
-
         private double totalPrice;
 
         public double TotalPrice
@@ -90,9 +69,17 @@ namespace Patxi.Models
             set { totalPrice = value; }
         }
 
-        private List<ProductoPedido> lista;
+        private double totalProducts;
 
-        public List<ProductoPedido> Products
+        public double TotalProducts
+        {
+            get { return totalProducts; }
+            set { totalProducts = value; }
+        }
+
+        private List<Producto> lista;
+
+        public List<Producto> Products
         {
             get { return lista; }
             set { lista = value; }

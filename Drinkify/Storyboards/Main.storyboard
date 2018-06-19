@@ -78,7 +78,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fFx-6q-cxq" kind="show" id="thj-1j-Bjv"/>
+                                    <segue destination="fFx-6q-cxq" kind="show" identifier="segueToTracker" id="thj-1j-Bjv"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="248" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x2i-mj-hGM">
@@ -183,7 +183,6 @@
                     <tabBarItem key="tabBarItem" title="CheckOut" id="pIT-EG-nMm"/>
                     <connections>
                         <outlet property="CheckOutCollectionView" destination="x2i-mj-hGM" id="tBu-Ei-61e"/>
-                        <outlet property="btnOrder" destination="cFU-jq-Onh" id="Ray-gA-oWt"/>
                         <outlet property="txtCantidad" destination="qDi-C0-fax" id="IfW-uW-ADn"/>
                         <outlet property="txtFormPago" destination="npt-5c-pHS" id="nqJ-9Z-Vmr"/>
                         <outlet property="txtNombre" destination="rxV-ep-2MR" id="BAf-kP-D8V"/>
@@ -886,7 +885,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="T5o-JD-FVG"/>
+        <segue reference="Z1X-X6-lHw"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3294117647" green="0.72941176470000002" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
