@@ -7,6 +7,7 @@ using Patxi.Models;
 using UIKit;
 using Firebase.Core;
 using Firebase.Database;
+using System.Collections.Generic;
 
 namespace Drinkify.Storyboards
 {
@@ -26,15 +27,12 @@ namespace Drinkify.Storyboards
             collectionView.DataSource = this;
             DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
             //nuint quantity;
-            DatabaseReference order = rootNode.GetChild("1");
+            DatabaseReference order = rootNode.GetChild("0");
             order.ObserveSingleEvent(DataEventType.Value, (snapshot) => {
                 //quantity = snapshot.GetValue<NSNumber>().NUIntValue;
 
-                if (!snapshot.Exists)
-                    return;
-                
-                var data = snapshot.GetValue<NSDictionary>();
-                var totalPrice = data.ValueForKey((NSString)"TotalPrice")?.ToString();
+                AddNewQuest();
+                //var totalPrice = data.ValueForKey((NSString)"TotalPrice")?.ToString();
 
             }, (error) => {
                 Console.WriteLine(error.LocalizedDescription);
@@ -59,6 +57,54 @@ namespace Drinkify.Storyboards
             }
 
         }
+
+        public void AddNewQuest()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
+                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
+                var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
+                DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
+                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Papas");
+                DatabaseReference productoNode = productosNode.GetChildByAutoId();
+                productoNode.SetValue<NSDictionary>(qs2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
+                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
+                var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
+                DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
+                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Cacahuates");
+                DatabaseReference productoNode = productosNode.GetChildByAutoId();
+                productoNode.SetValue<NSDictionary>(qs2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
+                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
+                var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
+                DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
+                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Palomitas");
+                DatabaseReference productoNode = productosNode.GetChildByAutoId();
+                productoNode.SetValue<NSDictionary>(qs2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                object[] alcoholKeys = { "Nombre", "Descripcion", "Precio", "Quantity", "alcohol", "porcentage" };
+                object[] alcoholValues = { "Centenario", "Tequila centenario reposado", $"$25{i}.00", "1 L", 1, "20%" };
+                var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
+                DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
+                DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Productos").GetChild("Dulces");
+                DatabaseReference productoNode = productosNode.GetChildByAutoId();
+                productoNode.SetValue<NSDictionary>(qs2);
+            }
+
+
+        }
+
+
 
         public nint GetItemsCount(UICollectionView collectionView, nint section)
         {
