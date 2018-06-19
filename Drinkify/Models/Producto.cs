@@ -7,9 +7,9 @@ namespace Patxi.Models
     public class Producto
     {
 
-        private int id;
+        private string id;
 
-        public int Id
+        public string Id
         {
             get { return id; }
             set { id = value; }
@@ -40,25 +40,22 @@ namespace Patxi.Models
             set { price = value; }
         }
 
-        private decimal quantity;
+        private string quantity;
 
-        public decimal Quantity
+        public string Quantity
         {
             get { return quantity; }
             set { quantity = value; }
         }
 
-        private Alcohol alcohol;
+        private string itemsBought;
 
-        public Alcohol Alcohol
+        public string ItemsBought
         {
-            get { return alcohol; }
-            set { alcohol = value; }
+            get { return itemsBought; }
+            set { itemsBought = value; }
         }
 
-        public static implicit operator string(Producto v)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

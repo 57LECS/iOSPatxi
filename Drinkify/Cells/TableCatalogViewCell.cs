@@ -3,11 +3,14 @@
 using System;
 
 using Foundation;
+using CoreGraphics;
 using UIKit;
+using Patxi.Models;
+using Drinkify.Helper;
 
 namespace Drinkify.Storyboards
 {
-	public partial class TableCatalogViewCell : UITableViewCell
+    public partial class TableCatalogViewCell : UITableViewCell
 	{
 		public TableCatalogViewCell (IntPtr handle) : base (handle)
 		{
@@ -15,8 +18,7 @@ namespace Drinkify.Storyboards
 		}
 
         public static readonly NSString Key = new NSString(nameof(TableCatalogViewCell));
-
-        #region Properties
+        public Producto producto;
 
         public UIImage ProductImage
         {
@@ -48,14 +50,41 @@ namespace Drinkify.Storyboards
             set => txtPrecio.Text = value;
         }
 
+        public string boughtNumber
+        {
+            get => txtNumber.Text;
+            set => txtPrecio.Text = value;
+        }
 
-        public NSIndexPath IndexPath
+
+		partial void btnAgregar(NSObject sender)
+		{
+            //UIAlertController.Create("Agregado", "Se agrego el obejto", UIAlertControllerStyle.Alert);
+            //TODO: MOstrar alerta;
+            producto.ItemsBought = boughtNumber;
+            DataPersistanceClass.products.Add(producto);
+
+
+		}
+
+
+
+
+
+		public NSIndexPath IndexPath
         {
             get;
             set;
         }
 
-        #endregion
 
 	}
+
+    public class PopOverViewDelegate : UIPopoverPresentationControllerDelegate
+    {
+        public override UIModalPresentationStyle GetAdaptivePresentationStyle(UIPresentationController forPresentationController)
+        {
+            return UIModalPresentationStyle.None;
+        }
+    }
 }

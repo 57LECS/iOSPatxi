@@ -10,18 +10,11 @@ using System.CodeDom.Compiler;
 
 namespace Drinkify.Storyboards
 {
-    [Register ("BebidasViewController")]
-    partial class BebidasViewController
+    [Register ("PopOverViewController")]
+    partial class PopOverViewController
     {
-        [Outlet]
-        UIKit.UICollectionView collectionView { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
-            if (collectionView != null) {
-                collectionView.Dispose ();
-                collectionView = null;
-            }
         }
     }
 }

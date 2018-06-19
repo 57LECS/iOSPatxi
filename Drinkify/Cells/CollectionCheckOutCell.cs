@@ -9,6 +9,31 @@ namespace Drinkify.Storyboards
 {
 	public partial class CollectionCheckOutCell : UICollectionViewCell
 	{
+        public static readonly NSString Key = new NSString(nameof(CollectionCheckOutCell));
+
+        public string txtCantidad
+        {
+            get => txtCant.Text;
+            set => txtCant.Text = value;
+
+        }
+
+        public string lblNombre
+        {
+            get => lblTitle.Text;
+            set => lblTitle.Text = value;
+
+        }
+
+        public string lblTotalPrice
+        {
+            get => lblTotal.Text;
+            set => lblTotal.Text = value;
+
+        }
+
+
+
 		public CollectionCheckOutCell (IntPtr handle) : base (handle)
 		{
 		}

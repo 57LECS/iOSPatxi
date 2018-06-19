@@ -156,11 +156,13 @@
     <Folder Include="Assets.xcassets\Tequila5.imageset\" />
     <Folder Include="Assets.xcassets\Tequila6.imageset\" />
     <Folder Include="Assets.xcassets\profileTest.imageset\" />
+    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Storyboards\Main.storyboard" />
     <InterfaceDefinition Include="Storyboards\TrackerStoryboard.storyboard" />
+    <InterfaceDefinition Include="ProductSelectedUI.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -252,6 +254,11 @@
     <Compile Include="Controllers\ProfileViewController.designer.cs">
       <DependentUpon>ProfileViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\PopOverViewController.cs" />
+    <Compile Include="Controllers\PopOverViewController.designer.cs">
+      <DependentUpon>PopOverViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\DataPersistanceClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="GoogleService-Info.plist" />

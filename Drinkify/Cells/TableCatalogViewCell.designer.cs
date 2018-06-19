@@ -25,7 +25,14 @@ namespace Drinkify.Storyboards
 		UIKit.UILabel txtNombre { get; set; }
 
 		[Outlet]
+		UIKit.UITextField txtNumber { get; set; }
+
+		[Outlet]
 		UIKit.UILabel txtPrecio { get; set; }
+
+		[Action ("btnAgregar:")]
+		partial void btnAgregar (Foundation.NSObject sender);
+
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -52,6 +59,11 @@ namespace Drinkify.Storyboards
 			if (txtPrecio != null) {
 				txtPrecio.Dispose ();
 				txtPrecio = null;
+			}
+
+			if (txtNumber != null) {
+				txtNumber.Dispose ();
+				txtNumber = null;
 			}
 		}
 	}

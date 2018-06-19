@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Foundation;
 using Patxi.Models;
 using UIKit;
-
 namespace Drinkify.Storyboards
 {
     public partial class DetalleViewController : UIViewController, IUITableViewDataSource, IUITableViewDelegate
@@ -15,6 +14,12 @@ namespace Drinkify.Storyboards
         public bool isOrders = false;
         public bool isBebidas = false;
         public bool isBotanas= false;
+        public NSDictionary diccionary;
+        NSString name = (NSString)"Nombre";
+        NSString price = (NSString)"Precio";
+        NSString qty = (NSString)"Quantity";
+        NSString desc = (NSString)"Descripcion";
+        List<Producto> productos;
 
         //int contador = 0;
 
@@ -42,6 +47,7 @@ namespace Drinkify.Storyboards
 
         public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
+            productos = new List<Producto>();
             if(isOrders){
                 var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
                 cell.NameText = "21/05/2018";
@@ -54,11 +60,27 @@ namespace Drinkify.Storyboards
             else if (isBebidas)
             {
                 var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
-                cell.NameText = "Absolut Edic Facet";
-                cell.PriceText = "$230.00";
-                cell.QuantityText = "750 ml";
-                cell.DescriptionText = "Vodka Absolut Azul Edic Facet";
+                var keyString = diccionary.Keys[indexPath.Row] as NSString;
+                var key = diccionary.ValueForKey(keyString);
+
+
+                Producto prod = new Producto();
+                prod.Id = keyString.ToString();
+                prod.Name = key.ValueForKey(name).ToString();
+                prod.Price = double.Parse(key.ValueForKey(price).ToString());
+                prod.Quantity = key.ValueForKey(qty).ToString();
+                prod.Description = key.ValueForKey(desc).ToString();
+
+
+                cell.NameText = prod.Name;
+                cell.PriceText = prod.Price.ToString();
+                cell.QuantityText = prod.Quantity;
+                cell.DescriptionText = prod.Description;
                 cell.ProductImage = UIImage.FromBundle("Tequila1");
+                //cell.prodKey = keyString;
+
+                cell.producto = prod;
+                productos.Add(prod);
                 return cell;
             }
             else if (isBotanas)
@@ -76,6 +98,8 @@ namespace Drinkify.Storyboards
 
         }
 
+
+
         [Export("numberOfSectionsInTableView:")]
         public nint NumberOfSections(UITableView tableView)
         {
@@ -84,8 +108,18 @@ namespace Drinkify.Storyboards
 
         public nint RowsInSection(UITableView tableView, nint section)
         {
-            return 2;
+            try
+            {
+                return diccionary.Keys.Length;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return 0;
+            }
             //return Productos.Count;
         }
+
+
 	}
 }
