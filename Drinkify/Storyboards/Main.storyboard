@@ -753,7 +753,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3RS-9c-MWf">
                                                     <rect key="frame" x="15" y="96" width="264" height="38"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pWg-3d-MRN">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Canitdad" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pWg-3d-MRN">
                                                             <rect key="frame" x="0.0" y="0.0" width="132" height="38"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
@@ -762,9 +762,6 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77p-0J-lum">
                                                             <rect key="frame" x="132" y="0.0" width="132" height="38"/>
                                                             <state key="normal" title="Agregar"/>
-                                                            <connections>
-                                                                <action selector="btnAgregar:" destination="hPu-N0-yRy" eventType="touchUpInside" id="Bnr-Rs-Fsn"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -800,6 +797,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.3294117647" green="0.72941176470000002" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="btnAgregarProducto" destination="77p-0J-lum" id="AWt-nG-daK"/>
                                             <outlet property="imgProd" destination="k9G-jg-Rch" id="SMM-y9-Ff5"/>
                                             <outlet property="txtCant" destination="ckw-jQ-Kbv" id="4h5-2i-JRo"/>
                                             <outlet property="txtDesc" destination="4eC-mS-xWR" id="Bef-ks-Tts"/>

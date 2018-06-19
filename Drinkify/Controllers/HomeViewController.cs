@@ -16,7 +16,9 @@ namespace Drinkify.Storyboards
 	{
         UIEdgeInsets sectionInsets;
         NSDictionary bebidas;
+        NSDictionary pedidosDic;
         int itemsPerRow = 2;
+        int pedidos = 0;
 		public HomeViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -40,6 +42,7 @@ namespace Drinkify.Storyboards
 
                 //AddNewQuest();
                 SetUserData();
+
                 //var totalPrice = data.ValueForKey((NSString)"TotalPrice")?.ToString();
 
             }, (error) => {
@@ -62,6 +65,12 @@ namespace Drinkify.Storyboards
                 vc.isOrders = true;
                 vc.isBebidas = false;
                 vc.isBotanas = false;
+                var btn = sender as UIButton;
+                NSObject objectOut;
+                pedidosDic.TryGetValue(NSObject.FromObject(btn.CurrentTitle), out objectOut);
+                var dasd = objectOut as NSDictionary;
+                vc.diccionary = dasd ?? pedidosDic;
+            
             }
 
         }
@@ -99,6 +108,22 @@ namespace Drinkify.Storyboards
             }, (error) => {
                 Console.WriteLine(error.LocalizedDescription);
             });
+
+            DatabaseReference persona = rootNode.GetChild("0").GetChild("Pedidos").GetChild("-LFMk0i9sdCo5P6ptFYC");
+            persona.ObserveSingleEvent(DataEventType.Value, (snapshot) => {
+                if (!snapshot.Exists)
+                    return;
+
+                pedidosDic = snapshot.GetValue<NSDictionary>();
+                pedidos = pedidosDic.Keys.Length;
+
+                collectionView.ReloadData();
+
+
+            }, (error) => {
+                Console.WriteLine(error.LocalizedDescription);
+            });
+
         }
 
 
@@ -127,7 +152,7 @@ namespace Drinkify.Storyboards
                 case 1:
                     var cellOrders = collectionView.DequeueReusableCell(CollectionHomeOrdersViewCell.Key, indexPath) as CollectionHomeOrdersViewCell;
 
-                    cellOrders.lblOrders = "12";
+                    cellOrders.lblOrders = pedidos.ToString();
                     return cellOrders;
 
                 default:

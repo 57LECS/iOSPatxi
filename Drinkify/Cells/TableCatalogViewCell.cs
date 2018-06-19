@@ -19,6 +19,9 @@ namespace Drinkify.Storyboards
 
         public static readonly NSString Key = new NSString(nameof(TableCatalogViewCell));
         public Producto producto;
+        public UIViewController viewController;
+        public Action btnFunc;
+        public bool hideInputs = false;
 
         public UIImage ProductImage
         {
@@ -53,39 +56,74 @@ namespace Drinkify.Storyboards
         public string boughtNumber
         {
             get => txtNumber.Text;
-            set => txtPrecio.Text = value;
+            set => txtNumber.Text = value;
         }
 
 
-		partial void btnAgregar(NSObject sender)
-		{
+        public override void LayoutSubviews()
+        {
+            base.LayoutSubviews();
+
+            txtNumber.Hidden = hideInputs;
+            btnAgregarProducto.Hidden = hideInputs;
+            btnAgregarProducto.TouchUpInside += delegate (object sender, EventArgs e)
+            {
+                UIAlertController alertController;
+                if (string.IsNullOrEmpty(boughtNumber)){
+                    alertController = UIAlertController.Create("Cantidad", $"Debes de ingresar una cantidad", UIAlertControllerStyle.Alert);
+                    alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Cancel, null));
+                }
+                else{
+                    alertController = UIAlertController.Create("Agregar al carrito", $"Vas a agregrar {boughtNumber} de {NameText} al carrito", UIAlertControllerStyle.Alert);
+                    alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, (UIAlertAction obj) => {
+                        producto.ItemsBought = boughtNumber;
+                        DataPersistanceClass.products.Add(producto);
+                        boughtNumber = "";
+
+                    }));
+                    alertController.AddAction(UIAlertAction.Create("Cancelar", UIAlertActionStyle.Cancel, null));
+                }
+                    
+
+
+
+                viewController.PresentViewController(alertController, true, null);
+                //UIApplication.SharedApplication.KeyWindow?.RootViewController.PresentViewController(alertController, true, null);
+            };
+
+
+
+        }
+
+        //public void agregarMetodobtn(Action func) => btnAgregarProducto.TouchUpInside += func;
+
+  //      partial void btnAgregar(NSObject sender)
+		//{
             //UIAlertController.Create("Agregado", "Se agrego el obejto", UIAlertControllerStyle.Alert);
             //TODO: MOstrar alerta;
-            producto.ItemsBought = boughtNumber;
-            DataPersistanceClass.products.Add(producto);
 
+            //var alertController = UIAlertController.Create("Agregar al carrito", $"Vas a agregrar {producto.ItemsBought}", UIAlertControllerStyle.Alert);
+            //alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default,(UIAlertAction obj) => {
+            //    producto.ItemsBought = boughtNumber;
+            //    DataPersistanceClass.products.Add(producto);
 
+            //}));
+            //alertController.AddAction(UIAlertAction.Create("Cancelar", UIAlertActionStyle.Cancel, null));
 
-		}
+            //UIApplication.SharedApplication.KeyWindow?.RootViewController.PresentViewController(alertController, true, null);
+		//}
+        
 
-
-
-
-
-		public NSIndexPath IndexPath
+        public NSIndexPath IndexPath
         {
             get;
             set;
         }
 
 
+
+
 	}
 
-    public class PopOverViewDelegate : UIPopoverPresentationControllerDelegate
-    {
-        public override UIModalPresentationStyle GetAdaptivePresentationStyle(UIPresentationController forPresentationController)
-        {
-            return UIModalPresentationStyle.None;
-        }
-    }
+
 }

@@ -20,7 +20,6 @@ namespace Drinkify.Storyboards
         NSString qty = (NSString)"Quantity";
         NSString desc = (NSString)"Descripcion";
         List<Producto> productos;
-
         //int contador = 0;
 
 		public DetalleViewController (IntPtr handle) : base (handle)
@@ -43,6 +42,7 @@ namespace Drinkify.Storyboards
                 //TODO: enviar a pantalla de checkOut
 
             };
+
         }
 
         public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -50,19 +50,23 @@ namespace Drinkify.Storyboards
             productos = new List<Producto>();
             if(isOrders){
                 var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
-                cell.NameText = "21/05/2018";
-                cell.PriceText = "$250.00";
-                cell.QuantityText = "2 Productos";
-                cell.DescriptionText = "Absolut Edic Facet \n Prispas";
+                var keyString = diccionary.Keys[indexPath.Row] as NSString;
+                var key = diccionary.ValueForKey(keyString);
+
+                cell.NameText = key.ValueForKey((NSString)"Fecha").ToString();
+                cell.PriceText = $"${key.ValueForKey((NSString)"TotalPrecio").ToString()}";
+                cell.QuantityText = $"{key.ValueForKey((NSString)"TotalProductos").ToString()} producto(s)";
+                cell.DescriptionText = key.ValueForKey((NSString)"Descripcion").ToString();
+                cell.hideInputs = true;
                 cell.ProductImage = UIImage.FromBundle("Tequila1");
                 return cell;
             }
-            else if (isBebidas)
+            else if (isBebidas || isBotanas)
             {
                 var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
                 var keyString = diccionary.Keys[indexPath.Row] as NSString;
                 var key = diccionary.ValueForKey(keyString);
-
+                cell.hideInputs = false;
 
                 Producto prod = new Producto();
                 prod.Id = keyString.ToString();
@@ -73,26 +77,18 @@ namespace Drinkify.Storyboards
 
 
                 cell.NameText = prod.Name;
-                cell.PriceText = prod.Price.ToString();
+                cell.PriceText = $"${prod.Price.ToString()}";
                 cell.QuantityText = prod.Quantity;
                 cell.DescriptionText = prod.Description;
                 cell.ProductImage = UIImage.FromBundle("Tequila1");
+                cell.viewController = this;
                 //cell.prodKey = keyString;
 
                 cell.producto = prod;
                 productos.Add(prod);
                 return cell;
             }
-            else if (isBotanas)
-            {
-                var cell = tableView.DequeueReusableCell("TableCell", indexPath) as TableCatalogViewCell;
-                cell.NameText = "Prispas";
-                cell.PriceText = "$20.00";
-                cell.QuantityText = "250 g";
-                cell.DescriptionText = "";
-                cell.ProductImage = UIImage.FromBundle("Tequila1");
-                return cell;
-            }
+
 
             return new UITableViewCell();
 

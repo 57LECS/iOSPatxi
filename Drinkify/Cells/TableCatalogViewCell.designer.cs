@@ -13,6 +13,9 @@ namespace Drinkify.Storyboards
 	partial class TableCatalogViewCell
 	{
 		[Outlet]
+		UIKit.UIButton btnAgregarProducto { get; set; }
+
+		[Outlet]
 		UIKit.UIImageView imgProd { get; set; }
 
 		[Outlet]
@@ -29,10 +32,6 @@ namespace Drinkify.Storyboards
 
 		[Outlet]
 		UIKit.UILabel txtPrecio { get; set; }
-
-		[Action ("btnAgregar:")]
-		partial void btnAgregar (Foundation.NSObject sender);
-
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -56,14 +55,19 @@ namespace Drinkify.Storyboards
 				txtNombre = null;
 			}
 
+			if (txtNumber != null) {
+				txtNumber.Dispose ();
+				txtNumber = null;
+			}
+
 			if (txtPrecio != null) {
 				txtPrecio.Dispose ();
 				txtPrecio = null;
 			}
 
-			if (txtNumber != null) {
-				txtNumber.Dispose ();
-				txtNumber = null;
+			if (btnAgregarProducto != null) {
+				btnAgregarProducto.Dispose ();
+				btnAgregarProducto = null;
 			}
 		}
 	}

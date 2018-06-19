@@ -87,8 +87,8 @@ namespace Drinkify.Storyboards
 		 void SetOrderInFireBase()
 		{
             
-            object[] alcoholKeys = { "Fecha", "TotalProductos", "TotalPrecio", "Repartidor", "Status", "Direccion" };
-            object[] alcoholValues = { DateTime.Now.ToString(), TotalProducts().ToString(), CalcularPrecioTotal(), "Martin Franciso Jimenez Sanchez", 1, "Cima del Sol 153, Lomas del Sol,37150, Leon GTO" };
+            object[] alcoholKeys = { "Fecha", "TotalProductos", "TotalPrecio", "Repartidor", "Status", "Direccion","Descripcion" };
+            object[] alcoholValues = { DateTime.Now.Date.ToString(), TotalProducts().ToString(), CalcularPrecioTotal(), "Martin Franciso Jimenez Sanchez", 1, "Cima del Sol 153, Lomas del Sol,37150, Leon GTO",ProductsDesc() };
             var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
             DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
             DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Pedidos").GetChild(DataPersistanceClass.persona.Id);
@@ -116,7 +116,8 @@ namespace Drinkify.Storyboards
             {
                 var precio = item.Price;
                 var cant = item.ItemsBought;
-                total += (precio * int.Parse(cant));
+                var asd = precio * int.Parse(cant);
+                total += asd;
             }
 
             return total.ToString();
@@ -126,9 +127,19 @@ namespace Drinkify.Storyboards
             int total = 0;
             foreach (Producto item in productos)
             {
-                total = int.Parse(item.ItemsBought);
+                total += int.Parse(item.ItemsBought);
             }
             return total;
+        }
+
+        string ProductsDesc()
+        {
+            string desc = "";
+            foreach (Producto item in productos)
+            {
+                desc += $",{item.Name}";
+            }
+            return desc;
         }
 	}
 }
