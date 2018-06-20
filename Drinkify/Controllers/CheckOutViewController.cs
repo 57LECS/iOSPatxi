@@ -150,6 +150,7 @@ namespace Drinkify.Storyboards
             {
                 if(!string.IsNullOrWhiteSpace(item.ItemsBought))
                     total += int.Parse(item.ItemsBought);
+                
                 //TODO: validar numero muy grandes
             }
             return total;
@@ -170,8 +171,23 @@ namespace Drinkify.Storyboards
             StorageReference profileImageRef = rootRefStorage.GetChild($"products/{id}.jpg");
             UIImage img = new UIImage();
             var ss = profileImageRef.GetData(1 * 1024 * 1024, (data, error) => {
-                view.Image = UIImage.LoadFromData(data);
+                try
+                {
+                    view.Image = UIImage.LoadFromData(data);
+                }
+                catch (ArgumentNullException ex)
+                {
+                    //no tiene imagen
+                    StorageReference genericImageRef = rootRefStorage.GetChild($"generic.jpg");
+                    genericImageRef.GetData(1 * 1024 * 1024, (dataa, errorr) => {
+
+                        view.Image = UIImage.LoadFromData(dataa);
+                    });
+
+                }
+
             });
+                
         }
 	}
 }

@@ -189,6 +189,14 @@
     <ImageAsset Include="Assets.xcassets\s1-2.imageset\if_Artboard_1_1790658.png" />
     <ImageAsset Include="Assets.xcassets\s1-1.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\s1-1.imageset\if_icon-40-clipboard-list_315162.png" />
+    <ImageAsset Include="Assets.xcassets\popcorn.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\popcorn.imageset\bowl-food-popcorn-37348.jpg" />
+    <ImageAsset Include="Assets.xcassets\chips.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\chips.imageset\chips-cirspy-crisp-479628.jpg" />
+    <ImageAsset Include="Assets.xcassets\candy.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\candy.imageset\beans-bright-candies-1050300.jpg" />
+    <ImageAsset Include="Assets.xcassets\peanuts.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\peanuts.imageset\food-nuts-peanuts-39345.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -240,6 +248,10 @@
     <Folder Include="Assets.xcassets\beerDefault.imageset\" />
     <Folder Include="Assets.xcassets\s1-2.imageset\" />
     <Folder Include="Assets.xcassets\s1-1.imageset\" />
+    <Folder Include="Assets.xcassets\popcorn.imageset\" />
+    <Folder Include="Assets.xcassets\chips.imageset\" />
+    <Folder Include="Assets.xcassets\candy.imageset\" />
+    <Folder Include="Assets.xcassets\peanuts.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\LaunchScreen.storyboard" />

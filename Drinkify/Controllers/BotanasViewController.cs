@@ -78,16 +78,16 @@ namespace Drinkify.Storyboards
             switch (indexPath.Item)
             {
                 case 0:
-                    img = UIImage.FromBundle("Brandy");
+                    img = UIImage.FromBundle("chips");
                     break;
                 case 1:
-                    img = UIImage.FromBundle("Cerveza");
+                    img = UIImage.FromBundle("peanuts");
                     break;
                 case 2:
-                    img = UIImage.FromBundle("Cognac");
+                    img = UIImage.FromBundle("popcorn");
                     break;
                 case 3:
-                    img = UIImage.FromBundle("Ginebra");
+                    img = UIImage.FromBundle("candy");
                     break;
 
                 default:

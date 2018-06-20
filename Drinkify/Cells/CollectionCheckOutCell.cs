@@ -71,7 +71,7 @@ namespace Drinkify.Storyboards
                 new UIBarButtonItem(UIBarButtonSystemItem.Done, delegate {
                     this.txtCant.ResignFirstResponder();
 
-
+                    int num = 0;
                     foreach (Producto item in DataPersistanceClass.products) {
                         if(item.Name==lblNombre){
                             item.ItemsBought = txtCant.Text;
@@ -82,6 +82,9 @@ namespace Drinkify.Storyboards
                         }
                     }
                     if(itm.ItemsBought=="0"||string.IsNullOrWhiteSpace(itm.ItemsBought)){
+                        var dsqw = DataPersistanceClass.products.Remove(itm);
+                    }
+                    else if(!int.TryParse(itm.ItemsBought,out num)){
                         var dsqw = DataPersistanceClass.products.Remove(itm);
                     }
                         

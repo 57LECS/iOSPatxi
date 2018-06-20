@@ -79,6 +79,10 @@ namespace Drinkify.Storyboards
             //btnAgregarProducto.Hidden = hideInputs;
             if (!hideInputs)
                 addToolbar();
+            else
+                btnAgregarProducto.SetTitle("Detalles", UIControlState.Normal); 
+            
+                
             btnAgregarProducto.TouchUpInside += delegate (object sender, EventArgs e)
             {
 

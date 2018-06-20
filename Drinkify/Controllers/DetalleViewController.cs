@@ -155,12 +155,33 @@ namespace Drinkify.Storyboards
 
 
 
-        void getImagene(string id,UIImageView view){
+        void getImagene(string id, UIImageView view)
+        {
             StorageReference profileImageRef = rootRefStorage.GetChild($"products/{id}.jpg");
+            StorageReference genericImageRef = rootRefStorage.GetChild($"products/generic.jpg");
             UIImage img = new UIImage();
-            var ss = profileImageRef.GetData(1 * 1024 * 1024,(data, error) =>{
-                view.Image = UIImage.LoadFromData(data);
+            var ss = profileImageRef.GetData(1 * 1024 * 1024, (data, error) => {
+                try
+                {
+                    if(data!=null)
+                        view.Image = UIImage.LoadFromData(data);
+                    else{
+                        genericImageRef.GetData(1 * 1024 * 1024, (dataa, errorr) => {
+
+                            view.Image = UIImage.LoadFromData(dataa);
+                        });
+                    }
+                        
+                }
+                catch (Exception ex)
+                {
+                    //no tiene imagen
+                    Console.WriteLine("Mensaje:" + ex.Message);
+
+                }
+
             });
+
         }
 
 
