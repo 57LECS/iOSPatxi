@@ -94,6 +94,9 @@
     <Reference Include="Firebase.Database">
       <HintPath>..\packages\Xamarin.Firebase.iOS.Database.4.1.3.1\lib\Xamarin.iOS10\Firebase.Database.dll</HintPath>
     </Reference>
+    <Reference Include="Firebase.Storage">
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Storage.2.1.1.1\lib\Xamarin.iOS10\Firebase.Storage.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -135,21 +138,57 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\patxiLogo%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\patxiLogo%403x.png" />
     <ImageAsset Include="Assets.xcassets\iconBotana.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\iconBotana.imageset\iconBotanas.png" />
-    <ImageAsset Include="Assets.xcassets\iconBotana.imageset\iconBotanas%402x.png" />
-    <ImageAsset Include="Assets.xcassets\iconBotana.imageset\iconBotanas%403x.png" />
     <ImageAsset Include="Assets.xcassets\iconBotella.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\iconBotella.imageset\iconBotella.png" />
-    <ImageAsset Include="Assets.xcassets\iconBotella.imageset\iconBotella%402x.png" />
     <ImageAsset Include="Assets.xcassets\iconBotella.imageset\iconBotella%403x.png" />
     <ImageAsset Include="Assets.xcassets\iconHome.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\iconHome.imageset\iconHouse.png" />
     <ImageAsset Include="Assets.xcassets\iconHome.imageset\iconHouse%402x.png" />
-    <ImageAsset Include="Assets.xcassets\iconHome.imageset\iconHouse%403x.png" />
     <ImageAsset Include="Assets.xcassets\iconCheckOut.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\iconCheckOut.imageset\iconCheck.png" />
     <ImageAsset Include="Assets.xcassets\iconCheckOut.imageset\iconCheck%402x.png" />
-    <ImageAsset Include="Assets.xcassets\iconCheckOut.imageset\iconCheck%403x.png" />
+    <ImageAsset Include="Assets.xcassets\iconBotana.imageset\iconBotanas.png" />
+    <ImageAsset Include="Assets.xcassets\s1-3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s1-3.imageset\if_list_1167996.png" />
+    <ImageAsset Include="Assets.xcassets\s2-1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s2-1.imageset\if_check_293662.png" />
+    <ImageAsset Include="Assets.xcassets\s2-2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s2-2.imageset\if_check_1055094.png" />
+    <ImageAsset Include="Assets.xcassets\s2-3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s2-3.imageset\if_square-check_226561.png" />
+    <ImageAsset Include="Assets.xcassets\s2-4.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s2-4.imageset\if_checklist_811547.png" />
+    <ImageAsset Include="Assets.xcassets\s3-1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s3-1.imageset\if_Close_2001866.png" />
+    <ImageAsset Include="Assets.xcassets\s3-2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s3-2.imageset\if_false-cross-reject-decline_2075833.png" />
+    <ImageAsset Include="Assets.xcassets\s3-3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s3-3.imageset\if_revisi_04_2191538.png" />
+    <ImageAsset Include="Assets.xcassets\s3-4.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s3-4.imageset\if_square-cross_226560.png" />
+    <ImageAsset Include="Assets.xcassets\s4-1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s4-1.imageset\if_delivery_2639804.png" />
+    <ImageAsset Include="Assets.xcassets\s4-2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s4-2.imageset\if_pen_stroke_sketch_doodle_lineart_146_451451.png" />
+    <ImageAsset Include="Assets.xcassets\s4-3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s4-3.imageset\if_Christmas_sledge_2747633.png" />
+    <ImageAsset Include="Assets.xcassets\s4-4.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s4-4.imageset\if_motorcycle_1055021.png" />
+    <ImageAsset Include="Assets.xcassets\s5-1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s5-1.imageset\if_dancer_1_811487.png" />
+    <ImageAsset Include="Assets.xcassets\s5-2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s5-2.imageset\if_Party_Newyears_Champagne_2817128.png" />
+    <ImageAsset Include="Assets.xcassets\s5-3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s5-3.imageset\if_dancer_2_811484.png" />
+    <ImageAsset Include="Assets.xcassets\s5-4.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s5-4.imageset\if_cocktails_1936913.png" />
+    <ImageAsset Include="Assets.xcassets\s5-5.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s5-5.imageset\if_dancer_3_811449.png" />
+    <ImageAsset Include="Assets.xcassets\s1-4.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s1-4.imageset\if_ic_format_list_numbered_48px_352390.png" />
+    <ImageAsset Include="Assets.xcassets\beerDefault.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\beerDefault.imageset\if_32_-_Harry_Potter_-_Colour_-_Butterbeer_2730343.png" />
+    <ImageAsset Include="Assets.xcassets\s1-2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s1-2.imageset\if_Artboard_1_1790658.png" />
+    <ImageAsset Include="Assets.xcassets\s1-1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\s1-1.imageset\if_icon-40-clipboard-list_315162.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -179,6 +218,28 @@
     <Folder Include="Assets.xcassets\iconBotella.imageset\" />
     <Folder Include="Assets.xcassets\iconHome.imageset\" />
     <Folder Include="Assets.xcassets\iconCheckOut.imageset\" />
+    <Folder Include="Assets.xcassets\s1-3.imageset\" />
+    <Folder Include="Assets.xcassets\s2-1.imageset\" />
+    <Folder Include="Assets.xcassets\s2-2.imageset\" />
+    <Folder Include="Assets.xcassets\s2-3.imageset\" />
+    <Folder Include="Assets.xcassets\s2-4.imageset\" />
+    <Folder Include="Assets.xcassets\s3-1.imageset\" />
+    <Folder Include="Assets.xcassets\s3-2.imageset\" />
+    <Folder Include="Assets.xcassets\s3-3.imageset\" />
+    <Folder Include="Assets.xcassets\s3-4.imageset\" />
+    <Folder Include="Assets.xcassets\s4-1.imageset\" />
+    <Folder Include="Assets.xcassets\s4-2.imageset\" />
+    <Folder Include="Assets.xcassets\s4-3.imageset\" />
+    <Folder Include="Assets.xcassets\s4-4.imageset\" />
+    <Folder Include="Assets.xcassets\s5-1.imageset\" />
+    <Folder Include="Assets.xcassets\s5-2.imageset\" />
+    <Folder Include="Assets.xcassets\s5-3.imageset\" />
+    <Folder Include="Assets.xcassets\s5-4.imageset\" />
+    <Folder Include="Assets.xcassets\s5-5.imageset\" />
+    <Folder Include="Assets.xcassets\s1-4.imageset\" />
+    <Folder Include="Assets.xcassets\beerDefault.imageset\" />
+    <Folder Include="Assets.xcassets\s1-2.imageset\" />
+    <Folder Include="Assets.xcassets\s1-1.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboards\LaunchScreen.storyboard" />
@@ -291,4 +352,5 @@
   <Import Project="..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\build\Xamarin.Firebase.iOS.InstanceID.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\build\Xamarin.Firebase.iOS.InstanceID.targets')" />
   <Import Project="..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5.1\build\Xamarin.Firebase.iOS.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5.1\build\Xamarin.Firebase.iOS.Analytics.targets')" />
   <Import Project="..\packages\Xamarin.Firebase.iOS.Database.4.1.3.1\build\Xamarin.Firebase.iOS.Database.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Database.4.1.3.1\build\Xamarin.Firebase.iOS.Database.targets')" />
+  <Import Project="..\packages\Xamarin.Firebase.iOS.Storage.2.1.1.1\build\Xamarin.Firebase.iOS.Storage.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Storage.2.1.1.1\build\Xamarin.Firebase.iOS.Storage.targets')" />
 </Project>

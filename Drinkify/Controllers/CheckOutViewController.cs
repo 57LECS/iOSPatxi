@@ -8,6 +8,7 @@ using Drinkify.Helper;
 using System.Collections.Generic;
 using Patxi.Models;
 using Firebase.Database;
+using Firebase.Storage;
 
 namespace Drinkify.Storyboards
 {
@@ -15,6 +16,8 @@ namespace Drinkify.Storyboards
     {
         List<Producto> productos;
         Pedido pedido;
+        StorageReference rootRefStorage;
+
 	
 		public CheckOutViewController (IntPtr handle) : base (handle)
 		{
@@ -28,32 +31,37 @@ namespace Drinkify.Storyboards
                 var vc = segue.DestinationViewController as PatxiTrackerViewController;
                 SetOrderInFireBase();
                 vc.pedido = pedido;
+
+                DataPersistanceClass.products.Clear();
+                setDatos();
             }
 		}
 
 		public override void ViewDidLoad()
 		{
             base.ViewDidLoad();
-
             productos = DataPersistanceClass.products;
-
             CheckOutCollectionView.Delegate = this;
             CheckOutCollectionView.DataSource = this;
+            rootRefStorage = Storage.DefaultInstance.GetRootReference();
+
 
 		}
 
 		public override void ViewWillAppear(bool animated)
 		{
             base.ViewWillAppear(animated);
+            productos = DataPersistanceClass.products;
             CheckOutCollectionView.ReloadData();
             setDatos();
 
 		}
 
 
-        void setDatos(){
+        public void setDatos(){
+            
             txtNombre.Text = DataPersistanceClass.persona.Name??"Usuario Name";
-            txtCantidad.Text = productos.Count.ToString();
+            txtCantidad.Text = TotalProducts().ToString();
             txtFormPago.Text = "Tarjeta con terminal";
             txtTotal.Text = $"${CalcularPrecioTotal()}";
             txtFormPago.Enabled = false;
@@ -68,13 +76,19 @@ namespace Drinkify.Storyboards
             var cell = CheckOutCollectionView.DequeueReusableCell(CollectionCheckOutCell.Key, indexPath) as CollectionCheckOutCell;
             cell.txtCantidad = producto.ItemsBought;
             cell.lblNombre = producto.Name;
-            int number = int.Parse(cell.txtCantidad) * int.Parse(producto.Price.ToString());
+
+            double number = int.Parse(cell.txtCantidad) * double.Parse(producto.Price.ToString());
             cell.lblTotalPrice = $"${number.ToString()}";
+            getImagen(producto.Id, cell.imgnView);
+            cell.viewController = this;
+            cell.collectionView = collectionView;
+
             return cell;
         }
 
         public nint GetItemsCount(UICollectionView collectionView, nint section)
         {
+            productos = DataPersistanceClass.products;
             return productos.Count;
         }
 
@@ -88,7 +102,7 @@ namespace Drinkify.Storyboards
 		{
             
             object[] alcoholKeys = { "Fecha", "TotalProductos", "TotalPrecio", "Repartidor", "Status", "Direccion","Descripcion" };
-            object[] alcoholValues = { DateTime.Now.Date.ToString(), TotalProducts().ToString(), CalcularPrecioTotal(), "Martin Franciso Jimenez Sanchez", 1, "Cima del Sol 153, Lomas del Sol,37150, Leon GTO",ProductsDesc() };
+            object[] alcoholValues = { DateTime.Now.Date.ToString(), TotalProducts().ToString(), CalcularPrecioTotal(), "Martin Franciso Jimenez Sanchez", 0, "Cima del Sol 153, Lomas del Sol,37150, Leon GTO",ProductsDesc() };
             var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
             DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
             DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Pedidos").GetChild(DataPersistanceClass.persona.Id);
@@ -101,7 +115,7 @@ namespace Drinkify.Storyboards
             pedido.IdUser = DataPersistanceClass.persona.Id;
             pedido.Date = DateTime.Now.ToString();
             pedido.Address = "Cima del Sol 153, Lomas del Sol,37150, Leon GTO";
-            pedido.IdStatus = 1;
+            pedido.IdStatus = 0;
             pedido.TotalPrice = double.Parse(CalcularPrecioTotal());
             pedido.TotalProducts = TotalProducts();
             pedido.Products = productos;
@@ -109,15 +123,22 @@ namespace Drinkify.Storyboards
 
 		}
 
-        string CalcularPrecioTotal(){
+
+
+        public string CalcularPrecioTotal(){
             double total=0.0;
 
             foreach (Producto item in productos)
             {
                 var precio = item.Price;
-                var cant = item.ItemsBought;
-                var asd = precio * int.Parse(cant);
-                total += asd;
+
+
+                    var cant = item.ItemsBought;
+                    var asd = precio * int.Parse(cant);
+                    total += asd;
+                
+
+
             }
 
             return total.ToString();
@@ -127,7 +148,9 @@ namespace Drinkify.Storyboards
             int total = 0;
             foreach (Producto item in productos)
             {
-                total += int.Parse(item.ItemsBought);
+                if(!string.IsNullOrWhiteSpace(item.ItemsBought))
+                    total += int.Parse(item.ItemsBought);
+                //TODO: validar numero muy grandes
             }
             return total;
         }
@@ -140,6 +163,15 @@ namespace Drinkify.Storyboards
                 desc += $",{item.Name}";
             }
             return desc;
+        }
+
+        void getImagen(string id, UIImageView view)
+        {
+            StorageReference profileImageRef = rootRefStorage.GetChild($"products/{id}.jpg");
+            UIImage img = new UIImage();
+            var ss = profileImageRef.GetData(1 * 1024 * 1024, (data, error) => {
+                view.Image = UIImage.LoadFromData(data);
+            });
         }
 	}
 }

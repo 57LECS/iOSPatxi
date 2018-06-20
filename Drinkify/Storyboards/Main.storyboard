@@ -100,6 +100,11 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pzX-6t-fMd">
                                                     <rect key="frame" x="0.0" y="0.0" width="106" height="142"/>
                                                 </imageView>
+                                                <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVh-yI-pGI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="142"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Absolut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ3-la-V4e">
                                                     <rect key="frame" x="8" y="8" width="90" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -124,7 +129,11 @@
                                             <constraint firstAttribute="trailing" secondItem="pzX-6t-fMd" secondAttribute="trailing" id="1nU-9Y-Mcd"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="hGd-JL-NP3" secondAttribute="trailing" id="4EE-1V-GYb"/>
                                             <constraint firstItem="qZ3-la-V4e" firstAttribute="leading" secondItem="pWm-bd-rrE" secondAttribute="leadingMargin" id="69b-cm-n1r"/>
+                                            <constraint firstItem="hGd-JL-NP3" firstAttribute="top" secondItem="bVh-yI-pGI" secondAttribute="bottom" constant="-29" id="98d-BR-qnR"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="hGd-JL-NP3" secondAttribute="bottom" id="Ewp-z8-rXY"/>
+                                            <constraint firstAttribute="trailing" secondItem="bVh-yI-pGI" secondAttribute="trailing" id="FHP-f7-tiT"/>
+                                            <constraint firstItem="bVh-yI-pGI" firstAttribute="leading" secondItem="pWm-bd-rrE" secondAttribute="leading" id="GAt-Mh-WsC"/>
+                                            <constraint firstItem="bVh-yI-pGI" firstAttribute="top" secondItem="qZ3-la-V4e" secondAttribute="bottom" constant="-29" id="GIb-ve-yos"/>
                                             <constraint firstItem="jk8-3C-JmW" firstAttribute="centerX" secondItem="pWm-bd-rrE" secondAttribute="centerX" id="HMp-A8-mPS"/>
                                             <constraint firstItem="hGd-JL-NP3" firstAttribute="leading" secondItem="pWm-bd-rrE" secondAttribute="leadingMargin" id="IuP-jK-rA8"/>
                                             <constraint firstItem="jk8-3C-JmW" firstAttribute="centerY" secondItem="pWm-bd-rrE" secondAttribute="centerY" id="QDA-RW-DgM"/>
@@ -137,6 +146,7 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="jk8-3C-JmW" secondAttribute="trailing" id="yso-Ux-lW5"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="imgView" destination="pzX-6t-fMd" id="jA8-pq-XCT"/>
                                             <outlet property="lblTitle" destination="qZ3-la-V4e" id="JjK-es-FZJ"/>
                                             <outlet property="lblTotal" destination="hGd-JL-NP3" id="395-vw-v1k"/>
                                             <outlet property="txtCant" destination="jk8-3C-JmW" id="CZD-cl-Xpe"/>
@@ -180,7 +190,7 @@
                             <constraint firstItem="TCC-vV-2Tf" firstAttribute="top" secondItem="npt-5c-pHS" secondAttribute="bottom" constant="8" id="ycV-wQ-J7p"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="CheckOut" id="pIT-EG-nMm"/>
+                    <tabBarItem key="tabBarItem" title="CheckOut" image="iconCheckOut" id="pIT-EG-nMm"/>
                     <connections>
                         <outlet property="CheckOutCollectionView" destination="x2i-mj-hGM" id="tBu-Ei-61e"/>
                         <outlet property="txtCantidad" destination="qDi-C0-fax" id="IfW-uW-ADn"/>
@@ -271,7 +281,7 @@
                             <constraint firstItem="wxm-zk-8CU" firstAttribute="leading" secondItem="aNT-Yq-Eni" secondAttribute="leadingMargin" id="uHd-cV-GoK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Botanas" id="aIa-M7-cCd"/>
+                    <tabBarItem key="tabBarItem" title="Botanas" image="iconBotana" id="aIa-M7-cCd"/>
                     <connections>
                         <outlet property="collectionView" destination="wxm-zk-8CU" id="nkj-8e-WXa"/>
                     </connections>
@@ -499,7 +509,7 @@
                             <constraint firstItem="Btb-EE-m7I" firstAttribute="leading" secondItem="Tkj-1k-KZT" secondAttribute="leadingMargin" id="x4g-Lh-ra0"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="J36-cp-DE3"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="iconHome" id="J36-cp-DE3"/>
                     <connections>
                         <outlet property="collectionView" destination="Btb-EE-m7I" id="v9Q-My-q0z"/>
                     </connections>
@@ -516,7 +526,7 @@
                         <viewControllerLayoutGuide type="top" id="8rR-Tc-baI"/>
                         <viewControllerLayoutGuide type="bottom" id="BPD-WY-Qlx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Df0-KG-ZhP">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="Df0-KG-ZhP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -563,7 +573,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaf-dm-Led">
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaf-dm-Led">
                                 <rect key="frame" x="105" y="149" width="164" height="164"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="164" id="BBz-1p-21Z"/>
@@ -689,7 +699,7 @@
                             <constraint firstItem="zuf-m6-cLq" firstAttribute="leading" secondItem="IL9-HI-sbi" secondAttribute="leadingMargin" id="nWz-Ve-9eY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Bebidas" id="CMp-8I-LEA"/>
+                    <tabBarItem key="tabBarItem" title="Bebidas" image="iconBotella" id="CMp-8I-LEA"/>
                     <connections>
                         <outlet property="collectionView" destination="zuf-m6-cLq" id="Ptj-V4-0lD"/>
                     </connections>
@@ -715,6 +725,14 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.19457673033126666" green="0.79946649185736041" blue="0.27158359034345597" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jkB-uP-qKu">
+                                    <rect key="frame" x="0.0" y="173" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <segue destination="fFx-6q-cxq" kind="show" identifier="segueToDetails" id="ZXH-II-SMM"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
                                     <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" rowHeight="145" id="hPu-N0-yRy" customClass="TableCatalogViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="145"/>
@@ -882,8 +900,15 @@
             <point key="canvasLocation" x="-182.40000000000001" y="117.84107946026987"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconBotana" width="28" height="35"/>
+        <image name="iconBotella" width="9" height="30"/>
+        <image name="iconCheckOut" width="30" height="26"/>
+        <image name="iconHome" width="30" height="28"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z1X-X6-lHw"/>
+        <segue reference="ku4-R0-EYR"/>
+        <segue reference="thj-1j-Bjv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3294117647" green="0.72941176470000002" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

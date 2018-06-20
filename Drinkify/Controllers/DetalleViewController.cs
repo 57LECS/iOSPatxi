@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Firebase.Storage;
 using Foundation;
 using Patxi.Models;
 using UIKit;
@@ -15,11 +16,15 @@ namespace Drinkify.Storyboards
         public bool isBebidas = false;
         public bool isBotanas= false;
         public NSDictionary diccionary;
+        public Pedido selectedOrder;
         NSString name = (NSString)"Nombre";
         NSString price = (NSString)"Precio";
         NSString qty = (NSString)"Quantity";
         NSString desc = (NSString)"Descripcion";
         List<Producto> productos;
+        List<UIImage> images;
+        StorageReference rootRefStorage;
+
         //int contador = 0;
 
 		public DetalleViewController (IntPtr handle) : base (handle)
@@ -42,7 +47,18 @@ namespace Drinkify.Storyboards
                 //TODO: enviar a pantalla de checkOut
 
             };
+            images = new List<UIImage>();
+            rootRefStorage = Storage.DefaultInstance.GetRootReference();
+        }
 
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            base.PrepareForSegue(segue, sender);
+            if (segue.Identifier.Equals("segueToDetails") == true)
+            {
+                var vc = segue.DestinationViewController as PatxiTrackerViewController;
+                vc.pedido = selectedOrder;
+            }
         }
 
         public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -58,7 +74,19 @@ namespace Drinkify.Storyboards
                 cell.QuantityText = $"{key.ValueForKey((NSString)"TotalProductos").ToString()} producto(s)";
                 cell.DescriptionText = key.ValueForKey((NSString)"Descripcion").ToString();
                 cell.hideInputs = true;
+                Pedido pedido = new Pedido();
+                pedido.Id =keyString.ToString();
+                pedido.Date = key.ValueForKey((NSString)"Fecha").ToString();
+                pedido.TotalPrice = double.Parse(key.ValueForKey((NSString)"TotalPrecio").ToString());
+                pedido.TotalProducts = double.Parse(key.ValueForKey((NSString)"TotalProductos").ToString());
+                pedido.Descripcion = key.ValueForKey((NSString)"Descripcion").ToString();
+                pedido.Address = key.ValueForKey((NSString)"Direccion").ToString();
+                pedido.Repartidor = key.ValueForKey((NSString)"Repartidor").ToString();
+                pedido.IdStatus = int.Parse(key.ValueForKey((NSString)"Status").ToString());
+                cell.pedido = pedido;
+                cell.viewController = this;
                 cell.ProductImage = UIImage.FromBundle("Tequila1");
+
                 return cell;
             }
             else if (isBebidas || isBotanas)
@@ -80,7 +108,7 @@ namespace Drinkify.Storyboards
                 cell.PriceText = $"${prod.Price.ToString()}";
                 cell.QuantityText = prod.Quantity;
                 cell.DescriptionText = prod.Description;
-                cell.ProductImage = UIImage.FromBundle("Tequila1");
+                getImagene(prod.Id,cell.ImgnProduct);
                 cell.viewController = this;
                 //cell.prodKey = keyString;
 
@@ -114,6 +142,25 @@ namespace Drinkify.Storyboards
                 return 0;
             }
             //return Productos.Count;
+        }
+
+        UIImage getImageFromData(UIImage img){
+            var xx = DateTime.Now;
+            UIImage asd = img;
+
+            //CatalogTableView.ReloadData();
+            images.Add(asd);
+            return asd;
+        }
+
+
+
+        void getImagene(string id,UIImageView view){
+            StorageReference profileImageRef = rootRefStorage.GetChild($"products/{id}.jpg");
+            UIImage img = new UIImage();
+            var ss = profileImageRef.GetData(1 * 1024 * 1024,(data, error) =>{
+                view.Image = UIImage.LoadFromData(data);
+            });
         }
 
 

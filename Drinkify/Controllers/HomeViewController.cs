@@ -9,6 +9,8 @@ using Firebase.Core;
 using Firebase.Database;
 using System.Collections.Generic;
 using Drinkify.Helper;
+using Firebase.Storage;
+using System.Drawing;
 
 namespace Drinkify.Storyboards
 {
@@ -19,6 +21,9 @@ namespace Drinkify.Storyboards
         NSDictionary pedidosDic;
         int itemsPerRow = 2;
         int pedidos = 0;
+        StorageReference rootRefStorage;
+
+
 		public HomeViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -29,6 +34,7 @@ namespace Drinkify.Storyboards
             sectionInsets = new UIEdgeInsets(20, 20, 20, 20);
             collectionView.Delegate = this;
             collectionView.DataSource = this;
+            rootRefStorage = Storage.DefaultInstance.GetRootReference();
             DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
             //nuint quantity;
             DatabaseReference order = rootNode.GetChild("0");
@@ -48,6 +54,9 @@ namespace Drinkify.Storyboards
             }, (error) => {
                 Console.WriteLine(error.LocalizedDescription);
             });
+
+            var storage = Storage.DefaultInstance;
+            rootRefStorage = storage.GetRootReference();
         }
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
@@ -75,19 +84,74 @@ namespace Drinkify.Storyboards
 
         }
 
-        public void AddNewQuest()
+        public void AddNewQuest(UIImage image)
         {
             
-                object[] alcoholKeys = { "Nombre", "Edad", "Correo", "Password", "Sexo", "rutaImagen" };
+                /*object[] alcoholKeys = { "Nombre", "Edad", "Correo", "Password", "Sexo", "rutaImagen" };
                 object[] alcoholValues = { "Andrea Hernandez De Alba", "21", "andie@correo.com", "123456789", "M", "qwerty" };
                 var qs2 = NSDictionary.FromObjectsAndKeys(alcoholValues, alcoholKeys, alcoholKeys.Length);
                 DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
                 DatabaseReference productosNode = rootNode.GetChild("0").GetChild("Usuarios");
                 DatabaseReference productoNode = productosNode.GetChildByAutoId();
-                productoNode.SetValue<NSDictionary>(qs2);
+                productoNode.SetValue<NSDictionary>(qs2);*/
+            var profileImageRef = rootRefStorage.GetChild($"/1/profile.jpg");
+
+            var imageMetadata = new StorageMetadata
+            {
+                ContentType = "image/jpeg"
+            };
+
+            image = ResizeImage(image, 170, 170);
+
+            profileImageRef.PutData(image.AsJPEG(), imageMetadata, (metadata, error) =>
+            {
+                if (error != null)
+                {
+                    Console.WriteLine("Error");
+                }
+            });
+
+
 
            
 
+        }
+
+
+        /*public void GetImageFromUser(string id)
+        {
+            if (ProfileImageFetched == null)
+                return;
+
+            StorageReference profileImageRef = rootRefStorage.GetChild($"images/{id}/profile.jpg");
+
+            profileImageRef.GetData(1 * 1024 * 1024, HandleStorageGetDataCompletion);
+
+            void HandleStorageGetDataCompletion(NSData data, NSError error)
+            {
+                if (error != null)
+                {
+                    // Uh-oh, an error occurred!
+                    return;
+                }
+
+                // Data for "images/island.jpg" is returned
+                var profileImage = UIImage.LoadFromData(data);
+
+                var okEvent = new UserGetImageEventArgs(profileImage);
+                ProfileImageFetched(this, okEvent);
+            }
+
+
+        }*/
+
+        public UIImage ResizeImage(UIImage sourceImage, float width, float height)
+        {
+            UIGraphics.BeginImageContext(new SizeF(width, height));
+            sourceImage.Draw(new RectangleF(0, 0, width, height));
+            var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+            UIGraphics.EndImageContext();
+            return resultImage;
         }
 
         public void SetUserData(){

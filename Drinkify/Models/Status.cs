@@ -35,4 +35,13 @@ namespace Patxi.Models
 
 
     }
+
+    public enum Statuses{
+        Recibida,
+        Aceptada,
+        Rechazada,
+        Camino,
+        Entregada
+
+    }
 }

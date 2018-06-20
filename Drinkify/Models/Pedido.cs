@@ -51,6 +51,14 @@ namespace Patxi.Models
             set { fecha = value; }
         }
 
+        private string descripcion;
+
+        public string Descripcion
+        {
+            get { return descripcion; }
+            set { descripcion = value; }
+        }
+
 
         private int idStatus;
 
@@ -76,6 +84,8 @@ namespace Patxi.Models
             get { return totalProducts; }
             set { totalProducts = value; }
         }
+
+
 
         private List<Producto> lista;
 

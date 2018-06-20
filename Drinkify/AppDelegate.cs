@@ -1,6 +1,7 @@
 ﻿using Foundation;
 using UIKit;
 using Firebase.Core;
+using Firebase.Storage;
 
 
 namespace Drinkify
