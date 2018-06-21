@@ -2,8 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using Drinkify.Helper;
+using Firebase.Storage;
 using Foundation;
 using Photos;
 using UIKit;
@@ -16,6 +18,7 @@ namespace Drinkify.Storyboards
     {
         Stream imgn;
         List<Face> detectedFaces;
+        StorageReference rootRefStorage;
 
         public ProfileViewController(IntPtr handle) : base(handle)
         {
@@ -25,7 +28,7 @@ namespace Drinkify.Storyboards
         {
             base.ViewDidLoad();
             imProfile.Image = UIImage.FromBundle("profileTest");
-
+            rootRefStorage = Storage.DefaultInstance.GetRootReference();
             txtUser.Text = DataPersistanceClass.persona.Email;
             txtName.Text = DataPersistanceClass.persona.Name;
 
@@ -37,6 +40,7 @@ namespace Drinkify.Storyboards
             {
                 showActionSheet();
             };
+            GetImageFromUser();
 
 
 
@@ -52,6 +56,32 @@ namespace Drinkify.Storyboards
             try
             {
                 detectedFaces = await FaceClient.Shared.DetectFacesInPhoto(imgn, true, FaceAttributeType.Age, FaceAttributeType.Gender);
+                if (detectedFaces.Count > 1)
+                    showMessage("Más de una persona", "Porfavor Sube una foto donde solo aparezcas tú", this);
+                else if(detectedFaces.Count<1)
+                    showMessage("No hay nadie!", "Porfavor Sube una foto donde sea más visible tu cara", this);
+                else{
+                    var detectedFace = detectedFaces[0];
+                    var edad = detectedFace.Attributes.Age;
+                    var gender = detectedFace.Attributes.Gender;
+                    if(edad>=18){
+                        var alertController = UIAlertController.Create("Mayor de edad", $"Detectamos que tienes al rededor de {edad} años", UIAlertControllerStyle.ActionSheet);
+                        //var alert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
+                        alertController.AddAction(UIAlertAction.Create("Es correcta", UIAlertActionStyle.Default, UpdateSesion));
+                        alertController.AddAction(UIAlertAction.Create("Es incorrecta pero soy mayor de edad", UIAlertActionStyle.Default, TryOpenPhotolibrary));
+                        alertController.AddAction(UIAlertAction.Create("Cancelar", UIAlertActionStyle.Cancel, null));
+                        PresentViewController(alertController, true, null);
+                    }
+                    else{
+                        var alertController = UIAlertController.Create("Menor de edad", $"Detectamos que tienes al rededor de {edad} años", UIAlertControllerStyle.ActionSheet);
+                        //var alert = UIAlertController.Create(null, null, UIAlertControllerStyle.ActionSheet);
+                        alertController.AddAction(UIAlertAction.Create("Es correcta y no puedo comprar alcohol", UIAlertActionStyle.Default, TryOpenPhotolibrary));
+                        alertController.AddAction(UIAlertAction.Create("Es incorrecta subire otra foto", UIAlertActionStyle.Default, TryOpenPhotolibrary));
+                        alertController.AddAction(UIAlertAction.Create("Cancelar", UIAlertActionStyle.Cancel, null));
+                        PresentViewController(alertController, true, null);
+                    }
+                       
+                }
             }
             catch (ErrorDetailException ex)
             {
@@ -62,6 +92,68 @@ namespace Drinkify.Storyboards
                 Console.WriteLine(ex.Message);
             }
             //var faceServiceClient = new FaceServiceClient("{FACE_API_SUBSCRIPTION_KEY}");
+        }
+
+        private void UpdateSesion(UIAlertAction obj)
+        {
+            txtTimeRemaining.Text = "12:00:00";
+            AddImage(imProfile.Image);
+        }
+
+
+        public void AddImage(UIImage image)
+        {
+            var profileImageRef = rootRefStorage.GetChild($"/users/{DataPersistanceClass.persona.Id}.jpg");
+
+            var imageMetadata = new StorageMetadata
+            {
+                ContentType = "image/jpeg"
+            };
+
+            image = ResizeImage(image, 170, 170);
+
+            profileImageRef.PutData(image.AsJPEG(), imageMetadata, (metadata, error) =>
+            {
+                if (error != null)
+                {
+                    Console.WriteLine("Error");
+                }
+            });
+        }
+
+        public UIImage ResizeImage(UIImage sourceImage, float width, float height)
+        {
+            UIGraphics.BeginImageContext(new SizeF(width, height));
+            sourceImage.Draw(new RectangleF(0, 0, width, height));
+            var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+            UIGraphics.EndImageContext();
+            return resultImage;
+        }
+
+        public void GetImageFromUser()
+        {
+            StorageReference profileImageRef = rootRefStorage.GetChild($"/users/{DataPersistanceClass.persona.Id}.jpg");
+            UIImage img = new UIImage();
+            var ss = profileImageRef.GetData(1 * 1024 * 1024, (data, error) => {
+                try
+                {
+                    imProfile.Image = UIImage.LoadFromData(data);
+                }
+                catch (ArgumentNullException ex)
+                {
+                    //no tiene imagen
+                    Console.WriteLine(ex.Message);
+                    StorageReference genericImageRef = rootRefStorage.GetChild($"/users/-LFMk0i9sdCo5P6ptFYC.jpg");
+                    genericImageRef.GetData(1 * 1024 * 1024, (dataa, errorr) => {
+
+                        imProfile.Image = UIImage.LoadFromData(dataa);
+                    });
+
+                }
+
+            });
+
+
         }
 
         void showActionSheet()

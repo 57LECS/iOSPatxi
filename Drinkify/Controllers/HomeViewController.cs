@@ -22,6 +22,7 @@ namespace Drinkify.Storyboards
         int itemsPerRow = 2;
         int pedidos = 0;
         StorageReference rootRefStorage;
+        public Persona persn;
 
 
 		public HomeViewController (IntPtr handle) : base (handle)
@@ -44,17 +45,27 @@ namespace Drinkify.Storyboards
                 if (!snapshot.Exists)
                     return;
 
-                bebidas = snapshot.GetValue<NSDictionary>();
+                try
+                {
+                    //bebidas = snapshot.GetValue<NSDictionary>();
+                    SetUserData(DataPersistanceClass.persona.Id);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    //bebidas
+                }
+
 
                 //AddNewQuest();
-                SetUserData();
+
 
                 //var totalPrice = data.ValueForKey((NSString)"TotalPrice")?.ToString();
 
             }, (error) => {
                 Console.WriteLine(error.LocalizedDescription);
             });
-
+            //SetUserData(persn.Id);
             var storage = Storage.DefaultInstance;
             rootRefStorage = storage.GetRootReference();
         }
@@ -154,10 +165,10 @@ namespace Drinkify.Storyboards
             return resultImage;
         }
 
-        public void SetUserData(){
+        public void SetUserData(string key){
             DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
             //nuint quantity;
-            DatabaseReference bebidas = rootNode.GetChild("0").GetChild("Usuarios").GetChild("-LFMk0i9sdCo5P6ptFYC");
+            DatabaseReference bebidas = rootNode.GetChild("0").GetChild("Usuarios").GetChild(key);
             bebidas.ObserveSingleEvent(DataEventType.Value, (snapshot) => {
                 if (!snapshot.Exists)
                     return;
@@ -173,7 +184,7 @@ namespace Drinkify.Storyboards
                 Console.WriteLine(error.LocalizedDescription);
             });
 
-            DatabaseReference persona = rootNode.GetChild("0").GetChild("Pedidos").GetChild("-LFMk0i9sdCo5P6ptFYC");
+            DatabaseReference persona = rootNode.GetChild("0").GetChild("Pedidos").GetChild(key);
             persona.ObserveSingleEvent(DataEventType.Value, (snapshot) => {
                 if (!snapshot.Exists)
                     return;
@@ -219,11 +230,30 @@ namespace Drinkify.Storyboards
                     cellOrders.lblOrders = pedidos.ToString();
                     return cellOrders;
 
+                case 2:
+                    var cellProx1 = collectionView.DequeueReusableCell(CollectionHomePaqueteViewCell.Key, indexPath) as CollectionHomePaqueteViewCell;
+                    var img = UIImage.FromBundle("Brandy");
+                    cellProx1.BackgroundImage = img;
+                    cellProx1.btnTitle = "Promociones (Proximamente)";
+                    return cellProx1;
+                case 3:
+                    var cellProx2 = collectionView.DequeueReusableCell(CollectionHomePaqueteViewCell.Key, indexPath) as CollectionHomePaqueteViewCell;
+                    var img2 = UIImage.FromBundle("Brandy");
+                    cellProx2.BackgroundImage = img2;
+                    cellProx2.btnTitle = "Paquetes (Proximamente)";
+                    return cellProx2;
+                case 4:
+                    var cellProx3 = collectionView.DequeueReusableCell(CollectionHomePaqueteViewCell.Key, indexPath) as CollectionHomePaqueteViewCell;
+                    var img3 = UIImage.FromBundle("Brandy");
+                    cellProx3.BackgroundImage = img3;
+                    cellProx3.btnTitle = "Zonas (Proximamente)";
+                    return cellProx3;
+
+
                 default:
                     var cellPackages = collectionView.DequeueReusableCell(CollectionHomePaqueteViewCell.Key, indexPath) as CollectionHomePaqueteViewCell;
-
-                    var img = UIImage.FromBundle("Brandy");
-                    cellPackages.BackgroundImage = img;
+                    var imgx = UIImage.FromBundle("Brandy");
+                    cellPackages.BackgroundImage = imgx;
                     cellPackages.btnTitle = "Packtempedes";
                     return cellPackages;
             }

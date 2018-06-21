@@ -50,6 +50,7 @@ namespace Drinkify.Storyboards
                 botanasDic.TryGetValue(NSObject.FromObject(btn.CurrentTitle), out objectOut);
                 var dasd = objectOut as NSDictionary;
                 vc.diccionary = dasd ?? botanasDic;
+
             }
 
         }

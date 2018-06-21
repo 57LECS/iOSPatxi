@@ -32,8 +32,8 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key></key>
-	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We want to use your pictures</string>
 	<key>CFBundleName</key>
 	<string>Patxi</string>
 </dict>

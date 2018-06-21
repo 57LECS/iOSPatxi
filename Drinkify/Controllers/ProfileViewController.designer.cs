@@ -18,6 +18,10 @@ namespace Drinkify.Storyboards
 
 
         [Outlet]
+        UIKit.UIButton btnRenew { get; set; }
+
+
+        [Outlet]
         UIKit.UIImageView imProfile { get; set; }
 
 
@@ -41,6 +45,11 @@ namespace Drinkify.Storyboards
             if (btnBack != null) {
                 btnBack.Dispose ();
                 btnBack = null;
+            }
+
+            if (btnRenew != null) {
+                btnRenew.Dispose ();
+                btnRenew = null;
             }
 
             if (imProfile != null) {

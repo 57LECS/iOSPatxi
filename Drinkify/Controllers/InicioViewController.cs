@@ -13,6 +13,15 @@ namespace Drinkify.Controllers
 
         public override void ViewDidLoad()
         {
+
+            btnLogin.TouchUpInside+=delegate {
+            
+
+            };
+            btnLogin.TouchUpInside += delegate {
+
+
+            };
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
             #region Cargar Frames
